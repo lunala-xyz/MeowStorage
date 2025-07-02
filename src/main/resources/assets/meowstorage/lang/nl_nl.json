@@ -1,4 +1,5 @@
 {
   "container.meowstorage.big_chest": "",
-  "block.meowstorage.big_chest": ""
+  "block.meowstorage.big_chest": "",
+  "item_group.meowstorage.creative_tab": "Meow Storage"
 }
