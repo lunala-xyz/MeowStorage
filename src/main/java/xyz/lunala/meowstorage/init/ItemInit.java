@@ -1,11 +1,11 @@
 package xyz.lunala.meowstorage.init;
 
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.DeferredRegister;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 import static xyz.lunala.meowstorage.init.BlockInit.BIG_CHEST;

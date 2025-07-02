@@ -1,11 +1,11 @@
 package xyz.lunala.meowstorage.init;
 
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import xyz.lunala.meowstorage.block.BigChestBlockEntity;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 
+import xyz.lunala.meowstorage.block.BigChestBlockEntity;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class BlockEntityInit {

@@ -1,13 +1,13 @@
 package xyz.lunala.meowstorage.init;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import xyz.lunala.meowstorage.block.BigChestBlock;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
+import xyz.lunala.meowstorage.block.BigChestBlock;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class BlockInit {

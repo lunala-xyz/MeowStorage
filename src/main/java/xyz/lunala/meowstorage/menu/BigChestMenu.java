@@ -1,17 +1,18 @@
 package xyz.lunala.meowstorage.menu;
 
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.items.SlotItemHandler;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+
 import xyz.lunala.meowstorage.Meowstorage;
-import xyz.lunala.meowstorage.block.BigChestBlockEntity;
 import xyz.lunala.meowstorage.init.MenuInit;
+import xyz.lunala.meowstorage.block.BigChestBlockEntity;
 
 public class BigChestMenu extends AbstractContainerMenu {
     private final BigChestBlockEntity blockEntity;

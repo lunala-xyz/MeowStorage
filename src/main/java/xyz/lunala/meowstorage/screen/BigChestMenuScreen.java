@@ -1,14 +1,12 @@
 package xyz.lunala.meowstorage.screen;
 
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import xyz.lunala.meowstorage.menu.BigChestMenu;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 
+import xyz.lunala.meowstorage.menu.BigChestMenu;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class BigChestMenuScreen extends AbstractContainerScreen<BigChestMenu> {
