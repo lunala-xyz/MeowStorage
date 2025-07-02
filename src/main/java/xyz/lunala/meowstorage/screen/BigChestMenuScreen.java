@@ -16,7 +16,8 @@ public class BigChestMenuScreen extends AbstractContainerScreen<BigChestMenu> {
         super(menu, inventory, title);
 
         this.imageWidth = 176;
-        this.imageHeight = 166;
+        this.imageHeight = 220;
+        this.inventoryLabelY = 127;
     }
 
     @Override

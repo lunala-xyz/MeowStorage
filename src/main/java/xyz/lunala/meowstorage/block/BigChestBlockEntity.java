@@ -24,7 +24,7 @@ import xyz.lunala.meowstorage.menu.BigChestMenu;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class BigChestBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler inventory = new ItemStackHandler(27) {
+    private final ItemStackHandler inventory = new ItemStackHandler(54) {
         @Override
         protected void onContentsChanged(int slot) {
             super.onContentsChanged(slot);
