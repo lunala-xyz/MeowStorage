@@ -83,11 +83,9 @@ public class BigChestMenu extends AbstractContainerMenu {
         ItemStack copyFromStack = fromStack.copy();
 
         if (pIndex < 36 ) {
-            // Inside Player Inv
-            if(!moveItemStackTo(fromStack, 36, 63, false))
+            if(!moveItemStackTo(fromStack, 36, 90, false))
                 return ItemStack.EMPTY;
-        } else if (pIndex < 63) {
-            // Inside Block Entity Inv
+        } else if (pIndex < 90) {
             if(!moveItemStackTo(fromStack, 0, 36, false))
                 return ItemStack.EMPTY;
         } else {
