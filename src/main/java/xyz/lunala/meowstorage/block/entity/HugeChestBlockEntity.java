@@ -14,8 +14,10 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
 import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.menu.ChestMenu;
@@ -34,7 +36,7 @@ public class HugeChestBlockEntity extends BlockEntity implements MenuProvider, I
     private Component TITLE = Component.translatable("container.%s.huge_chest".formatted(MODID));
 
     public HugeChestBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityInit.BIG_CHEST.get(), pos, state);
+        super(BlockEntityInit.HUGE_CHEST.get(), pos, state);
     }
 
     @Override
