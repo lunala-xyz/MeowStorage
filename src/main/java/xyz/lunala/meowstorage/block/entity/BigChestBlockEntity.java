@@ -1,4 +1,4 @@
-package xyz.lunala.meowstorage.block;
+package xyz.lunala.meowstorage.block.entity;
 
 import net.minecraft.core.Direction;
 import org.jetbrains.annotations.NotNull;
@@ -18,13 +18,14 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
+import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.menu.BigChestMenu;
 
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
-public class BigChestBlockEntity extends BlockEntity implements MenuProvider {
+public class BigChestBlockEntity extends BlockEntity implements MenuProvider, IChestBlockMenuProvider {
     private final ItemStackHandler inventory = new ItemStackHandler(54) {
         @Override
         protected void onContentsChanged(int slot) {

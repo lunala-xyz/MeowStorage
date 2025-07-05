@@ -12,10 +12,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 
 import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.init.MenuInit;
-import xyz.lunala.meowstorage.block.BigChestBlockEntity;
+import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
 
 public class BigChestMenu extends AbstractContainerMenu {
-    private final BigChestBlockEntity blockEntity;
+    private final IChestBlockMenuProvider chestBlockMenuProvider;
     private final ContainerLevelAccess levelAccess;
 
     //Client Constructor
@@ -26,8 +26,8 @@ public class BigChestMenu extends AbstractContainerMenu {
     //Server Constructor
     public BigChestMenu(int id, Inventory playerInventory, BlockEntity blockEntity) {
         super(MenuInit.BIG_CHEST_MENU.get(), id);
-        if (blockEntity instanceof BigChestBlockEntity bigChestBlockEntity) {
-            this.blockEntity = bigChestBlockEntity;
+        if (blockEntity instanceof IChestBlockMenuProvider bigChestBlockEntity) {
+            this.chestBlockMenuProvider = bigChestBlockEntity;
         } else {
             throw new IllegalStateException("Expected BigChestBlockEntity but got " + blockEntity.getClass().getCanonicalName());
         }
@@ -36,10 +36,10 @@ public class BigChestMenu extends AbstractContainerMenu {
 
         createPlayerHotbar(playerInventory);
         createPlayerInventory(playerInventory);
-        createBlockEntityInventory(bigChestBlockEntity);
+        createBlockEntityInventory(this.chestBlockMenuProvider);
     }
 
-    private void createBlockEntityInventory(BigChestBlockEntity blockEntity) {
+    private void createBlockEntityInventory(IChestBlockMenuProvider blockEntity) {
         blockEntity.getOptional().ifPresent(inventory -> {
             for (int i = 0; i < inventory.getSlots(); i++) {
                 this.addSlot(new SlotItemHandler(inventory,
@@ -51,8 +51,8 @@ public class BigChestMenu extends AbstractContainerMenu {
     }
 
     private void createPlayerInventory(Inventory playerInventory) {
-        for (int y = 0; y < 3; ++y) {
-            for (int x = 0; x < 9; ++x) {
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 9; x++) {
                 this.addSlot(new Slot(playerInventory, x + y * 9 + 9, 8 + x * 18, 138 + y * 18));
             }
         }
@@ -63,7 +63,6 @@ public class BigChestMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 196));
         }
     }
-
 
     // Don't touch this, I don't know either
     // Just leave it there
@@ -101,10 +100,7 @@ public class BigChestMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player pPlayer) {
+        if (!(chestBlockMenuProvider instanceof BlockEntity blockEntity)) throw new IllegalStateException("Expected BlockEntity but got " + chestBlockMenuProvider.getClass().getCanonicalName());
         return stillValid(this.levelAccess, pPlayer, blockEntity.getBlockState().getBlock());
-    }
-
-    public BigChestBlockEntity getBlockEntity() {
-        return blockEntity;
     }
 }

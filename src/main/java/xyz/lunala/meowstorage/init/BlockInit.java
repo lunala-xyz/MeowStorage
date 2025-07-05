@@ -8,6 +8,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import xyz.lunala.meowstorage.block.BigChestBlock;
+import xyz.lunala.meowstorage.block.HugeChestBlock;
+
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class BlockInit {
@@ -15,4 +17,5 @@ public class BlockInit {
 
     public static final RegistryObject<BigChestBlock> BIG_CHEST = BLOCKS.register("big_chest", () -> new BigChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 
+    public static final RegistryObject<HugeChestBlock> HUGE_CHEST = BLOCKS.register("huge_chest", () -> new HugeChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 }
