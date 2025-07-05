@@ -1,5 +1,7 @@
 {
-  "container.meowstorage.big_chest": "Große Truhe",
   "block.meowstorage.big_chest": "Große Truhe",
-  "item_group.meowstorage.creative_tab": "Meow Storage"
+  "container.meowstorage.big_chest": "Große Truhe",
+  "block.meowstorage.huge_chest": "Riesige Truhe",
+  "container.meowstorage.huge_chest": "Riesige Truhe",
+  "item_group.meowstorage.creative_tab": "Miau Lager"
 }
