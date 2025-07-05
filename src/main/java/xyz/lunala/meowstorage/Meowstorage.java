@@ -42,7 +42,7 @@ public class Meowstorage {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> {
-                MenuScreens.register(MenuInit.BIG_CHEST_MENU.get(), BigChestMenuScreen::new);
+                MenuScreens.register(MenuInit.CHEST_MENU.get(), BigChestMenuScreen::new);
             });
         }
     }

@@ -6,11 +6,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 
-import xyz.lunala.meowstorage.menu.BigChestMenu;
+import xyz.lunala.meowstorage.menu.ChestMenu;
+
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class MenuInit {
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MODID);
 
-    public static final RegistryObject<MenuType<BigChestMenu>> BIG_CHEST_MENU = MENU_TYPES.register("big_chest_menu", () -> IForgeMenuType.create(BigChestMenu::new));
+    public static final RegistryObject<MenuType<ChestMenu>> CHEST_MENU = MENU_TYPES.register("chest_menu", () -> IForgeMenuType.create(ChestMenu::new));
 }

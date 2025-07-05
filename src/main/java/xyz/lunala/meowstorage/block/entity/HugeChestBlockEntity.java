@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
-import xyz.lunala.meowstorage.menu.BigChestMenu;
+import xyz.lunala.meowstorage.menu.ChestMenu;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
@@ -48,9 +48,7 @@ public class HugeChestBlockEntity extends BlockEntity implements MenuProvider, I
     protected void saveAdditional(CompoundTag nbt) {
         super.saveAdditional(nbt);
         CompoundTag modData = new CompoundTag();
-
         modData.put("inventory", inventory.serializeNBT());
-
         nbt.put(MODID, modData);
     }
 
@@ -91,7 +89,7 @@ public class HugeChestBlockEntity extends BlockEntity implements MenuProvider, I
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player player) {
-        return new BigChestMenu(pContainerId, pPlayerInventory, this);
+        return new ChestMenu(pContainerId, pPlayerInventory, this);
     }
 
     public LazyOptional<ItemStackHandler> getOptional() {

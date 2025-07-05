@@ -6,13 +6,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 
-import xyz.lunala.meowstorage.menu.BigChestMenu;
+import xyz.lunala.meowstorage.menu.ChestMenu;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
-public class BigChestMenuScreen extends AbstractContainerScreen<BigChestMenu> {
+public class BigChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
     private static final ResourceLocation background = new ResourceLocation(MODID, "textures/gui/big_chest_menu.png");
 
-    public BigChestMenuScreen(BigChestMenu menu, Inventory inventory, Component title) {
+    public BigChestMenuScreen(ChestMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
 
         this.imageWidth = 176;

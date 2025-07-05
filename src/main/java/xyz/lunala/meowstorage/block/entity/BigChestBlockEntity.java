@@ -20,7 +20,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
-import xyz.lunala.meowstorage.menu.BigChestMenu;
+import xyz.lunala.meowstorage.menu.ChestMenu;
 
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
@@ -94,7 +94,7 @@ public class BigChestBlockEntity extends BlockEntity implements MenuProvider, IC
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player player) {
-        return new BigChestMenu(pContainerId, pPlayerInventory, this);
+        return new ChestMenu(pContainerId, pPlayerInventory, this);
     }
 
     public LazyOptional<ItemStackHandler> getOptional() {

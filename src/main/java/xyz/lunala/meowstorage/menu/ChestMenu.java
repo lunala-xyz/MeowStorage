@@ -14,18 +14,18 @@ import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.init.MenuInit;
 import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
 
-public class BigChestMenu extends AbstractContainerMenu {
+public class ChestMenu extends AbstractContainerMenu {
     private final IChestBlockMenuProvider chestBlockMenuProvider;
     private final ContainerLevelAccess levelAccess;
 
     //Client Constructor
-    public BigChestMenu(int id, Inventory playerInventory, FriendlyByteBuf additionalData) {
+    public ChestMenu(int id, Inventory playerInventory, FriendlyByteBuf additionalData) {
         this(id, playerInventory, playerInventory.player.level().getBlockEntity(additionalData.readBlockPos()));
     }
 
     //Server Constructor
-    public BigChestMenu(int id, Inventory playerInventory, BlockEntity blockEntity) {
-        super(MenuInit.BIG_CHEST_MENU.get(), id);
+    public ChestMenu(int id, Inventory playerInventory, BlockEntity blockEntity) {
+        super(MenuInit.CHEST_MENU.get(), id);
         if (blockEntity instanceof IChestBlockMenuProvider bigChestBlockEntity) {
             this.chestBlockMenuProvider = bigChestBlockEntity;
         } else {
