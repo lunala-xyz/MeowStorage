@@ -1,5 +1,6 @@
 package xyz.lunala.meowstorage.block;
 
+import net.minecraft.core.Direction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -57,6 +58,11 @@ public class BigChestBlockEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
+        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
     }
 
