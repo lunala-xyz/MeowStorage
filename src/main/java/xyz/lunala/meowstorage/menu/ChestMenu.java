@@ -64,6 +64,8 @@ public class ChestMenu extends AbstractContainerMenu {
         }
     }
 
+
+
     // Don't touch this, I don't know either
     // Just leave it there
     @Override
@@ -82,9 +84,9 @@ public class ChestMenu extends AbstractContainerMenu {
         ItemStack copyFromStack = fromStack.copy();
 
         if (pIndex < 36 ) {
-            if(!moveItemStackTo(fromStack, 36, 90, false))
+            if(!moveItemStackTo(fromStack, 36, this.slots.size(), false))
                 return ItemStack.EMPTY;
-        } else if (pIndex < 90) {
+        } else if (pIndex < this.slots.size()) {
             if(!moveItemStackTo(fromStack, 0, 36, false))
                 return ItemStack.EMPTY;
         } else {
