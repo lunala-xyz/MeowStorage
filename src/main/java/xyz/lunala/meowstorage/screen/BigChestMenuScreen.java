@@ -1,6 +1,9 @@
 package xyz.lunala.meowstorage.screen;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.AbstractScrollWidget;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -8,6 +11,8 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.client.event.ContainerScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
 import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.menu.ChestMenu;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
@@ -87,6 +92,20 @@ public class BigChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
         }
 
         renderLabels(pGuiGraphics, pMouseX, pMouseY);
+
+        ItemStack draggedStack = this.menu.getCarried();
+
+        if(draggedStack.isEmpty()) return;
+
+        RenderSystem.disableDepthTest();
+
+        pGuiGraphics.pose().pushPose();
+        pGuiGraphics.pose().translate(0.0F, 0.0F, 100.0F);
+        pGuiGraphics.renderItem(draggedStack, pMouseX - 8, pMouseY - 8);
+        pGuiGraphics.renderItemDecorations(font, draggedStack, pMouseX - 8, pMouseY - 8);
+        pGuiGraphics.pose().popPose();
+
+        RenderSystem.enableDepthTest();
     }
 
     private void renderSlotWithOffset(GuiGraphics guiGraphics, int offsetX, int offsetY, float partialTick, Slot slot, int mouseX, int mouseY) {
