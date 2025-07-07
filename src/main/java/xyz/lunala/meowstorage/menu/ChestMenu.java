@@ -65,14 +65,6 @@ public class ChestMenu extends AbstractContainerMenu {
         }
     }
 
-    public IChestBlockMenuProvider getChestBlockMenuProvider() {
-        return chestBlockMenuProvider;
-    }
-
-    public ItemStackHandler getContainer() {
-        return chestBlockMenuProvider.getOptional().orElseThrow(() -> new IllegalStateException("Expected a container but got none"));
-    }
-
     // Don't touch this, I don't know either
     // Just leave it there
     @Override

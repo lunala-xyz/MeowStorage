@@ -1,12 +1,14 @@
 package xyz.lunala.meowstorage.mixin;
 
 import org.objectweb.asm.tree.ClassNode;
-import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
+import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+
 import xyz.lunala.meowstorage.Meowstorage;
 
-import java.util.List;
 import java.util.Set;
+import java.util.List;
 
 public class MeowStorageMixinPlugin implements IMixinConfigPlugin {
     /**
