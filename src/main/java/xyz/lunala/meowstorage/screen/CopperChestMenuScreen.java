@@ -20,7 +20,22 @@ public class CopperChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
     private static final int VISIBLE_ROWS = 6;
     private static final int SLOT_COLS = 9;
     private final int totalRows;
-    private int scrollOffset = 4;
+    private final int magicScrollNumber = 4;
+    private int scrollOffset = magicScrollNumber;
+
+    private boolean needsScrollbar = false;
+    private int scrollBarLeft = 177;
+    private int scrollBarTop = 3;
+    private int scrollBarWidth = 15;
+    private int scrollBarHeight = 122;
+
+    private int floaterLeft = 194;
+    private int floaterTop = 7;
+    private int floaterWidth = 7;
+    private int floaterHeight = 15;
+    private boolean floaterDragged = false;
+    private int floaterUpperLimit = 7;
+    private int floaterLowerLimit = 106;
 
     public CopperChestMenuScreen(ChestMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
@@ -29,6 +44,8 @@ public class CopperChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
 
         this.totalRows = (int)Math.ceil(getInventorySlots() / (float)SLOT_COLS);
 
+        needsScrollbar = Math.max(0, totalRows - VISIBLE_ROWS) > magicScrollNumber;
+        Meowstorage.getLogger().info(String.valueOf(Math.max(0, totalRows - VISIBLE_ROWS)));
         rearrange();
     }
 
@@ -43,12 +60,11 @@ public class CopperChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
         if (maxOffset > 0) {
             scrollOffset = scrollOffset - (int)Math.signum(delta);
 
-            if (scrollOffset < 4) {
-                scrollOffset = 4;
+            if (scrollOffset < magicScrollNumber) {
+                scrollOffset = magicScrollNumber;
             } else if (scrollOffset > maxOffset) {
                 scrollOffset = maxOffset;
             }
-
         }
 
         rearrange();
@@ -57,17 +73,14 @@ public class CopperChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
     }
 
     private void rearrange() {
-        Meowstorage.getLogger().info("Rearranging Chest Menu: {}", getInventorySlots());
         for (int i = (9 * 3 + 9); i < getInventorySlots(); i++) {
             int row = i / SLOT_COLS;
             int col = i % SLOT_COLS;
             SlotItemHandler slot = (SlotItemHandler) menu.slots.get(i);
 
-            Meowstorage.getLogger().info("Slot " + i + ": " + slot.toString());
-
             if(!(slot instanceof IMovableSlot)) {
                 Meowstorage.getLogger().error("Expected IMovableSlot but got " + slot.getClass().getCanonicalName());
-                Meowstorage.getLogger().error("Game ate the throw!");
+                Meowstorage.getLogger().error("Game prolly ate the throw!");
                 throw new IllegalStateException("Expected IMovableSlot but got " + slot.getClass().getCanonicalName());
             }
 
@@ -76,11 +89,9 @@ public class CopperChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
                 int slotY = 18 + (row - scrollOffset) * 18;
                 ((IMovableSlot) slot).meowstorage$setX(slotX);
                 ((IMovableSlot) slot).meowstorage$setY(slotY);
-                Meowstorage.getLogger().info("Setting slot " + i + " to position: " + slotX + ", " + slotY);
             } else {
                 ((IMovableSlot) slot).meowstorage$setX(-1000);
                 ((IMovableSlot) slot).meowstorage$setY(-1000);
-                Meowstorage.getLogger().info("Hiding slot " + i + " at position: -1000, -1000");
             }
         }
     }
@@ -92,7 +103,72 @@ public class CopperChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
 
         this.inventoryLabelY = 127;
 
+        if (needsScrollbar) {
+            guiGraphics.blit(BACKGROUND, this.leftPos + scrollBarLeft, this.topPos + scrollBarTop, scrollBarLeft, scrollBarTop, scrollBarWidth, scrollBarHeight);
+
+            int floaterOffset = (int) (((scrollOffset - magicScrollNumber) / (double) (totalRows - VISIBLE_ROWS - magicScrollNumber)) * (floaterLowerLimit - floaterUpperLimit));
+
+            if(floaterDragged) {
+                floaterOffset = mouseY - (int) (floaterHeight * 1.5);
+
+                Meowstorage.getLogger().info(String.valueOf(floaterOffset));
+
+                if (floaterOffset < 0) {
+                    floaterOffset = 0;
+                } else if (floaterOffset > 99) {
+                    floaterOffset = 99;
+                }
+            }
+
+            guiGraphics.blit(BACKGROUND, this.leftPos + 181, this.topPos + floaterTop + floaterOffset, floaterLeft, floaterTop, floaterWidth, floaterHeight);
+        }
     }
+
+    @Override
+    public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
+        int floaterOffset = (int) (((scrollOffset - magicScrollNumber) / (double) (totalRows - VISIBLE_ROWS - magicScrollNumber)) * (floaterLowerLimit - floaterUpperLimit));
+
+        if (this.isHovering(181, floaterTop + floaterOffset, floaterWidth, floaterHeight, pMouseX, pMouseY)) {
+            floaterDragged = true;
+        }
+
+        return super.mouseClicked(pMouseX, pMouseY, pButton);
+    }
+
+    @Override
+    public boolean mouseReleased(double pMouseX, double pMouseY, int pButton) {
+        floaterDragged = false;
+
+        return super.mouseReleased(pMouseX, pMouseY, pButton);
+    }
+
+    @Override
+    public boolean mouseDragged(double pMouseX, double pMouseY, int pButton, double pDragX, double pDragY) {
+        if (floaterDragged) {
+            updateFloater(pMouseY);
+            rearrange();
+        }
+
+        return super.mouseDragged(pMouseX, pMouseY, pButton, pDragX, pDragY);
+    }
+
+    private void updateFloater(double pMouseY) {
+        int maxOffset = Math.max(0, totalRows - VISIBLE_ROWS);
+
+        scrollOffset = (int) Math.round(((
+                pMouseY -
+                (this.topPos + floaterTop))
+                / (double) (floaterLowerLimit - floaterUpperLimit))
+                * (totalRows - VISIBLE_ROWS - magicScrollNumber))
+                + magicScrollNumber;
+
+        if (scrollOffset < magicScrollNumber) {
+            scrollOffset = magicScrollNumber;
+        } else if (scrollOffset > maxOffset) {
+            scrollOffset = maxOffset;
+        }
+    }
+
 
     private double getInventorySlots() {
         return menu.slots.size();
