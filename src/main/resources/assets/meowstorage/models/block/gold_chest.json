@@ -1,0 +1,7 @@
+{
+  "parent": "meowstorage:block/big_chest",
+  "textures": {
+    "0": "meowstorage:block/gold_chest_texture",
+    "particle": "meowstorage:block/gold_chest_texture"
+  }
+}

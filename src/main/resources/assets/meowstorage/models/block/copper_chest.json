@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "meowstorage:block/big_chest_texture",
-		"particle": "meowstorage:block/big_chest_texture"
+		"0": "meowstorage:block/copper_chest_texture",
+		"particle": "meowstorage:block/copper_chest_texture"
 	},
 	"elements": [
 		{
