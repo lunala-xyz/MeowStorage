@@ -1,16 +1,19 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "xyz.lunala.meowstorage.mixin",
-  "refmap": "mixins.meowstorage.refmap.json",
+  "refmap": "meowstorage.refmap.json",
   "plugin": "xyz.lunala.meowstorage.mixin.MeowStorageMixinPlugin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "SlotMixin"
   ],
-  "client":[
-
+  "client": [
   ],
   "injectors": {
     "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
   }
 }
