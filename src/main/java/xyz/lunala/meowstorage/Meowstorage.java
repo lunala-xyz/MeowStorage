@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Mixins;
 
 import xyz.lunala.meowstorage.init.*;
-import xyz.lunala.meowstorage.screen.CopperChestMenuScreen;
+import xyz.lunala.meowstorage.screen.ChestMenuScreen;
 
 @Mod(Meowstorage.MODID)
 public class Meowstorage {
@@ -46,7 +46,7 @@ public class Meowstorage {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> {
-                MenuScreens.register(MenuInit.CHEST_MENU.get(), CopperChestMenuScreen::new);
+                MenuScreens.register(MenuInit.CHEST_MENU.get(), ChestMenuScreen::new);
             });
         }
     }
