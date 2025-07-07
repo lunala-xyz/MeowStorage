@@ -1,9 +1,10 @@
 # Meow Storage
 Your all in one storage solution does not include cats by default
+All of this is very much WIP
 
 ## Todo's 
 
-### Chests
+### Chests (Implmented, Shit textures)
 | Type | Material | Size |
 |------|----------|------|
 | Big Chest | Copper | 2x Chest = 54 Slots |
@@ -12,7 +13,7 @@ Your all in one storage solution does not include cats by default
 | Gigantic Chest | Diamond | 16x Chest = 432 Slots |
 | Colossal Chest | Netherrite | 32x Chest = 864 Slots |
 
-### Barrels
+### Barrels (TBA)
 Add single item storage block that can hold multiple stacks of one item
 | Type | Material | Size |
 |------|----------|------|
@@ -22,5 +23,8 @@ Add single item storage block that can hold multiple stacks of one item
 | Gigantic Barrel | Diamond | 432 Stacks = 27648 Items |
 | Colossal Barrel | Netherrite | 864 Stacks = 55296 Items |
 
-### Cats
+### Cats (TBA)
 Add silly little cat easter eggs
+
+### Other features
+TBA
