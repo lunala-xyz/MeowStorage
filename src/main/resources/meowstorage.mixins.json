@@ -15,5 +15,7 @@
   },
   "overwrites": {
     "requireAnnotations": true
-  }
+  },
+  "priority": 1000,
+  "mixinPriority": 1000
 }
