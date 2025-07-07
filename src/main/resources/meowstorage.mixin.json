@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "xyz.lunala.meowstorage.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "SlotMixin"
+  ],
+  "client":[
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

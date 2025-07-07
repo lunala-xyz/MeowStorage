@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
-import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
+import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.menu.ChestMenu;
 

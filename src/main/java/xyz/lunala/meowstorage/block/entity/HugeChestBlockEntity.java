@@ -18,7 +18,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
+import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.menu.ChestMenu;
 

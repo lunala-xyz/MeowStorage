@@ -1,4 +1,4 @@
-package xyz.lunala.meowstorage.block;
+package xyz.lunala.meowstorage.util;
 
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
