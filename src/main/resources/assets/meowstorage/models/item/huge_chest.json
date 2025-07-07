@@ -1,7 +1,0 @@
-{
-  "parent": "meowstorage:block/copper_chest",
-  "textures": {
-    "0": "meowstorage:block/huge_chest_texture",
-    "particle": "meowstorage:block/huge_chest_texture"
-  }
-}

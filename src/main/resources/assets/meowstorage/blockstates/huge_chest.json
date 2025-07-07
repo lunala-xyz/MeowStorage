@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "meowstorage:block/huge_chest" },
-    "facing=east": { "model": "meowstorage:block/huge_chest", "y": 90 },
-    "facing=south": { "model": "meowstorage:block/huge_chest", "y": 180 },
-    "facing=west": { "model": "meowstorage:block/huge_chest", "y": 270 }
-  }
-}

@@ -16,6 +16,9 @@ public class CreativeTabInit {
 
     public static final RegistryObject<CreativeModeTab> TAB = CREATIVE_MODE_TABS.register("meowstorage_tab", () -> CreativeModeTab.builder().title(Component.translatable("item_group.%s.creative_tab".formatted(MODID))).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> COPPER_CHEST_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(COPPER_CHEST_ITEM.get());
-        output.accept(HUGE_CHEST_ITEM.get());
+        output.accept(IRON_CHEST_ITEM.get());
+        output.accept(GOLD_CHEST_ITEM.get());
+        output.accept(DIAMOND_CHEST_ITEM.get());
+        output.accept(NETHERITE_CHEST_ITEM.get());
     }).build());
 }
