@@ -26,19 +26,19 @@ import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
-public class BigChestBlockEntity extends BlockEntity implements MenuProvider, IChestBlockMenuProvider {
+public class CopperChestBlockEntity extends BlockEntity implements MenuProvider, IChestBlockMenuProvider {
     private final ItemStackHandler inventory = new ItemStackHandler(54) {
         @Override
         protected void onContentsChanged(int slot) {
             super.onContentsChanged(slot);
-            BigChestBlockEntity.this.setChanged();
+            CopperChestBlockEntity.this.setChanged();
         }
     };
     private final LazyOptional<ItemStackHandler> inventoryOptional = LazyOptional.of(() -> inventory);
-    private Component TITLE = Component.translatable("container.%s.big_chest".formatted(MODID));
+    private Component TITLE = Component.translatable("container.%s.copper_chest".formatted(MODID));
 
-    public BigChestBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityInit.BIG_CHEST.get(), pos, state);
+    public CopperChestBlockEntity(BlockPos pos, BlockState state) {
+        super(BlockEntityInit.COPPER_CHEST.get(), pos, state);
     }
 
     @Override
