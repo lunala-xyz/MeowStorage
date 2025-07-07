@@ -1,7 +1,7 @@
 {
-  "block.meowstorage.copper_chest": "Copper Chest",
-  "container.meowstorage.copper_chest": "Copper Chest",
-  "block.meowstorage.huge_chest": "Huge Chest",
-  "container.meowstorage.huge_chest": "Huge Chest",
-  "item_group.meowstorage.creative_tab": "Meow Storage"
+  "block.meowstorage.copper_chest": "Koperen Kist",
+  "container.meowstorage.copper_chest": "Koperen Kist",
+  "block.meowstorage.huge_chest": "Enorme Kist",
+  "container.meowstorage.huge_chest": "Enorme Kist",
+  "item_group.meowstorage.creative_tab": "Miauw Opslag"
 }
