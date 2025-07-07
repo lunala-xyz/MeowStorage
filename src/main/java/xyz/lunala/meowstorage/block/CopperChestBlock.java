@@ -24,33 +24,33 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import xyz.lunala.meowstorage.init.BlockEntityInit;
-import xyz.lunala.meowstorage.block.entity.BigChestBlockEntity;
+import xyz.lunala.meowstorage.block.entity.CopperChestBlockEntity;
 
 
-public class BigChestBlock extends Block implements EntityBlock {
+public class CopperChestBlock extends Block implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public BigChestBlock(Properties properties) {
+    public CopperChestBlock(Properties properties) {
         super(properties);
         registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     @Override
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return BlockEntityInit.BIG_CHEST.get().create(blockPos, blockState);
+        return BlockEntityInit.COPPER_CHEST.get().create(blockPos, blockState);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
 
-        if(!(blockEntity instanceof BigChestBlockEntity bigChestBlockEntity)) return InteractionResult.PASS;
+        if(!(blockEntity instanceof CopperChestBlockEntity copperChestBlockEntity)) return InteractionResult.PASS;
 
         if(level.isClientSide) return InteractionResult.SUCCESS;
 
         if(!(player instanceof ServerPlayer sPlayer)) return InteractionResult.CONSUME;
 
-        NetworkHooks.openScreen(sPlayer, bigChestBlockEntity, buf -> {;
+        NetworkHooks.openScreen(sPlayer, copperChestBlockEntity, buf -> {;
             buf.writeBlockPos(pos);
         });
 

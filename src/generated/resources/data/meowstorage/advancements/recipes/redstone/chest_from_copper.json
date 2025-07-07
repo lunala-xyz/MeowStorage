@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "meowstorage:big_chest_from_copper"
+        "recipe": "meowstorage:chest_from_copper"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "meowstorage:big_chest_from_copper"
+      "meowstorage:chest_from_copper"
     ]
   },
   "sends_telemetry_event": false

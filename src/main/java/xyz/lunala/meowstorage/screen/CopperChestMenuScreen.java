@@ -14,8 +14,8 @@ import xyz.lunala.meowstorage.util.IMovableSlot;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
-public class BigChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
-    private static final ResourceLocation BACKGROUND = new ResourceLocation(MODID, "textures/gui/big_chest_menu.png");
+public class CopperChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
+    private static final ResourceLocation BACKGROUND = new ResourceLocation(MODID, "textures/gui/copper_chest_menu.png");
 
     private static final int VISIBLE_ROWS = 6;
     private static final int SLOT_COLS = 9;
@@ -37,7 +37,7 @@ public class BigChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
     private int floaterUpperLimit = 7;
     private int floaterLowerLimit = 106;
 
-    public BigChestMenuScreen(ChestMenu menu, Inventory inventory, Component title) {
+    public CopperChestMenuScreen(ChestMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
         this.imageWidth = 176;
         this.imageHeight = 220;

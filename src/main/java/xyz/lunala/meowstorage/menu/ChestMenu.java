@@ -27,10 +27,10 @@ public class ChestMenu extends AbstractContainerMenu {
     //Server Constructor
     public ChestMenu(int id, Inventory playerInventory, BlockEntity blockEntity) {
         super(MenuInit.CHEST_MENU.get(), id);
-        if (blockEntity instanceof IChestBlockMenuProvider bigChestBlockEntity) {
-            this.chestBlockMenuProvider = bigChestBlockEntity;
+        if (blockEntity instanceof IChestBlockMenuProvider copperChestBlockEntity) {
+            this.chestBlockMenuProvider = copperChestBlockEntity;
         } else {
-            throw new IllegalStateException("Expected BigChestBlockEntity but got " + blockEntity.getClass().getCanonicalName());
+            throw new IllegalStateException("Expected CopperChestBlockEntity but got " + blockEntity.getClass().getCanonicalName());
         }
 
         this.levelAccess = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());

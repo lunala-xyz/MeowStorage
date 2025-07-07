@@ -3,13 +3,9 @@ package xyz.lunala.meowstorage.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.init.BlockInit;
 
@@ -23,7 +19,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-        donutRecipe(pWriter, RecipeCategory.REDSTONE, BlockInit.BIG_CHEST.get(), Items.COPPER_INGOT,"has_copper_ingot", "big_chest_from_copper");
+        donutRecipe(pWriter, RecipeCategory.REDSTONE, BlockInit.COPPER_CHEST.get(), Items.COPPER_INGOT,"has_copper_ingot", "chest_from_copper");
     }
 
     protected static void fullRecipe(Consumer<FinishedRecipe> recipeOutput, RecipeCategory category, ItemLike result, ItemLike input, String unlockName, String recipeName) {

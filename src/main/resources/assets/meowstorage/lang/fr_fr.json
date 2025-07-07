@@ -1,6 +1,6 @@
 {
-  "block.meowstorage.big_chest": "Gros Coffre",
-  "container.meowstorage.big_chest": "Gros Coffre",
+  "block.meowstorage.copper_chest": "Copper Chest",
+  "container.meowstorage.copper_chest": "Copper Chest",
   "block.meowstorage.huge_chest": "Huge Chest",
   "container.meowstorage.huge_chest": "Huge Chest",
   "item_group.meowstorage.creative_tab": "Meow Storage"
