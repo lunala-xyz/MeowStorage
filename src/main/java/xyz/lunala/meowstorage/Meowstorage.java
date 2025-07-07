@@ -2,6 +2,7 @@ package xyz.lunala.meowstorage;
 
 import com.mojang.logging.LogUtils;
 
+import net.minecraft.world.level.block.WeatheringCopperFullBlock;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;

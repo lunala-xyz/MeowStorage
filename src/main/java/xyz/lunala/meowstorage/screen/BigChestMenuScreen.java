@@ -69,7 +69,11 @@ public class BigChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
             int col = i % SLOT_COLS;
             SlotItemHandler slot = (SlotItemHandler) menu.slots.get(i);
 
+            Meowstorage.getLogger().info("Slot " + i + ": " + slot.toString());
+
             if(!(slot instanceof IMovableSlot)) {
+                Meowstorage.getLogger().error("Expected IMovableSlot but got " + slot.getClass().getCanonicalName());
+                Meowstorage.getLogger().error("Game ate the throw!");
                 throw new IllegalStateException("Expected IMovableSlot but got " + slot.getClass().getCanonicalName());
             }
 
@@ -78,9 +82,11 @@ public class BigChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
                 int slotY = 18 + (row - scrollOffset) * 18;
                 ((IMovableSlot) slot).meowstorage$setX(slotX);
                 ((IMovableSlot) slot).meowstorage$setY(slotY);
+                Meowstorage.getLogger().info("Setting slot " + i + " to position: " + slotX + ", " + slotY);
             } else {
                 ((IMovableSlot) slot).meowstorage$setX(-1000);
                 ((IMovableSlot) slot).meowstorage$setY(-1000);
+                Meowstorage.getLogger().info("Hiding slot " + i + " at position: -1000, -1000");
             }
         }
     }

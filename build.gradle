@@ -154,7 +154,7 @@ dependencies {
 
 mixin {
     add sourceSets.main, 'mixins.meowstorage.refmap.json'
-    config 'mixins.meowstorage.json'
+    config 'meowstorage.mixins.json'
     debug = true
     dumpTargetOnFailure = true
 }
