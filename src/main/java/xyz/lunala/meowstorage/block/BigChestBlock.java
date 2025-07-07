@@ -23,8 +23,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-import xyz.lunala.meowstorage.block.entity.BigChestBlockEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
+import xyz.lunala.meowstorage.block.entity.BigChestBlockEntity;
 
 
 public class BigChestBlock extends Block implements EntityBlock {

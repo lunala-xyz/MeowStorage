@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.lunala.meowstorage.mixin",
+  "refmap": "meowstorage.refmap.json",
+  "plugin": "xyz.lunala.meowstorage.mixin.MeowStorageMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "SlotMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "priority": 1000,
+  "mixinPriority": 1000
+}

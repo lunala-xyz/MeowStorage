@@ -13,6 +13,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import org.slf4j.Logger;
 
+import org.spongepowered.asm.mixin.Mixins;
+
 import xyz.lunala.meowstorage.init.*;
 import xyz.lunala.meowstorage.screen.BigChestMenuScreen;
 
@@ -22,6 +24,7 @@ public class Meowstorage {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public Meowstorage() {
+        Mixins.addConfiguration("meowstorage.mixins.json");
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         BlockInit.BLOCKS.register(modEventBus);
@@ -29,6 +32,7 @@ public class Meowstorage {
         CreativeTabInit.CREATIVE_MODE_TABS.register(modEventBus);
         BlockEntityInit.BLOCK_ENTITIES.register(modEventBus);
         MenuInit.MENU_TYPES.register(modEventBus);
+
 
         MinecraftForge.EVENT_BUS.register(this);
     }

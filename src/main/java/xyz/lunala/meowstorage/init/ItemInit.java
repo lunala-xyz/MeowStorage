@@ -6,8 +6,8 @@ import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
 
-import static xyz.lunala.meowstorage.Meowstorage.MODID;
 import static xyz.lunala.meowstorage.init.BlockInit.*;
+import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class ItemInit {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);

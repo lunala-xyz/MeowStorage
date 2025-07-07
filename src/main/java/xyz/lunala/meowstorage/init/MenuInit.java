@@ -7,7 +7,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 
 import xyz.lunala.meowstorage.menu.ChestMenu;
-
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class MenuInit {

@@ -1,26 +1,27 @@
 package xyz.lunala.meowstorage.block.entity;
 
-import net.minecraft.core.Direction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.items.ItemStackHandler;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraftforge.common.util.LazyOptional;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+
+import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
-import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
-import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.menu.ChestMenu;
+import xyz.lunala.meowstorage.init.BlockEntityInit;
+import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
 
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;

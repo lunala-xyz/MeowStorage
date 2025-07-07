@@ -3,12 +3,12 @@ package xyz.lunala.meowstorage.init;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
+
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
+import static xyz.lunala.meowstorage.Meowstorage.MODID;
 import xyz.lunala.meowstorage.block.entity.BigChestBlockEntity;
 import xyz.lunala.meowstorage.block.entity.HugeChestBlockEntity;
-
-import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class BlockEntityInit {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);

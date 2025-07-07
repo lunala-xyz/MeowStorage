@@ -4,6 +4,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerLevelAccess;
@@ -12,7 +13,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 
 import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.init.MenuInit;
-import xyz.lunala.meowstorage.block.IChestBlockMenuProvider;
+import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
 
 public class ChestMenu extends AbstractContainerMenu {
     private final IChestBlockMenuProvider chestBlockMenuProvider;
@@ -63,8 +64,6 @@ public class ChestMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 196));
         }
     }
-
-
 
     // Don't touch this, I don't know either
     // Just leave it there
