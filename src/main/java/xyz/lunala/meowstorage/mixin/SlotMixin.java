@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.Mutable;
 
-import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.util.IMovableSlot;
 
 @Mixin(Slot.class)
