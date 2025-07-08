@@ -1,10 +1,13 @@
 package xyz.lunala.meowstorage.datagen;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.util.Tuple;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import xyz.lunala.meowstorage.Meowstorage;
@@ -70,8 +73,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ;
     }
 
+    protected static void smithingUpgrade(Consumer<FinishedRecipe> recipeOutput, ItemLike template, ItemLike base, ItemLike addition, Item result) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(template),
+                        Ingredient.of(base),
+                        Ingredient.of(addition),
+                        RecipeCategory.MISC, result)
+                .unlocks("has_" + addition, has(addition))
+                .save(recipeOutput, Meowstorage.MODID + ":" + result + "_smithing");
+    }
+
     protected static void chestFromMaterial(Consumer<FinishedRecipe> recipeOutput, ItemLike chest, ItemLike material, ItemLike base, String unlockName) {
-        filledRecipe(recipeOutput, RecipeCategory.REDSTONE, chest, material, base,unlockName, chest.toString() + "_from_" + material.toString());
+        filledRecipe(recipeOutput, RecipeCategory.REDSTONE, chest, material, base, unlockName, chest.toString() + "_from_" + material.toString());
     }
 
     protected static void generateChests(Consumer<FinishedRecipe> recipeOutput) {
@@ -80,7 +93,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 new Tuple(ItemInit.IRON_CHEST_ITEM.get(), Items.IRON_INGOT),
                 new Tuple(ItemInit.GOLD_CHEST_ITEM.get(), Items.GOLD_INGOT),
                 new Tuple(ItemInit.DIAMOND_CHEST_ITEM.get(), Items.DIAMOND),
-                new Tuple(ItemInit.NETHERITE_CHEST_ITEM.get(), Items.NETHERITE_INGOT),
         };
         ItemLike base = Items.CHEST;
 
@@ -89,5 +101,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             base = pair.getA();
         }
 
+        smithingUpgrade(recipeOutput, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ItemInit.DIAMOND_CHEST_ITEM.get(), Items.NETHERITE_INGOT, ItemInit.NETHERITE_CHEST_ITEM.get());
     }
 }

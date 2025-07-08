@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_netherite_chest": {
+    "has_netherite_ingot": {
       "conditions": {
         "items": [
           {
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "meowstorage:netherite_chest_from_netherite_ingot"
+        "recipe": "meowstorage:netherite_chest_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_netherite_chest",
+      "has_netherite_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "meowstorage:netherite_chest_from_netherite_ingot"
+      "meowstorage:netherite_chest_smithing"
     ]
   },
   "sends_telemetry_event": false
