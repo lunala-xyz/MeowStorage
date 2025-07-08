@@ -2,17 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
+    "A": {
+      "item": "meowstorage:gold_chest"
+    },
     "B": {
-      "item": "minecraft:copper_ingot"
+      "item": "minecraft:diamond"
     }
   },
   "pattern": [
     "BBB",
-    "B B",
+    "BAB",
     "BBB"
   ],
   "result": {
-    "item": "meowstorage:copper_chest"
+    "item": "meowstorage:diamond_chest"
   },
   "show_notification": true
 }

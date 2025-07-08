@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_copper_ingot": {
+    "has_netherite_chest": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:copper_ingot"
+              "minecraft:netherite_ingot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "meowstorage:chest_from_copper"
+        "recipe": "meowstorage:netherite_chest_from_netherite_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_copper_ingot",
+      "has_netherite_chest",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "meowstorage:chest_from_copper"
+      "meowstorage:netherite_chest_from_netherite_ingot"
     ]
   },
   "sends_telemetry_event": false
