@@ -1,7 +1,13 @@
 {
-  "block.meowstorage.copper_chest": "Koperen Kist",
-  "container.meowstorage.copper_chest": "Koperen Kist",
-  "block.meowstorage.huge_chest": "Enorme Kist",
-  "container.meowstorage.huge_chest": "Enorme Kist",
-  "item_group.meowstorage.creative_tab": "Miauw Opslag"
+  "block.meowstorage.copper_chest": "Copper Chest",
+  "container.meowstorage.copper_chest": "Copper Chest",
+  "block.meowstorage.iron_chest": "Iron Chest",
+  "container.meowstorage.iron_chest": "Iron Chest",
+  "block.meowstorage.gold_chest": "Gold Chest",
+  "container.meowstorage.gold_chest": "Gold Chest",
+  "block.meowstorage.diamond_chest": "Diamond Chest",
+  "container.meowstorage.diamond_chest": "Diamond Chest",
+  "block.meowstorage.netherite_chest": "Netherite Chest",
+  "container.meowstorage.netherite_chest": "Netherite Chest",
+  "item_group.meowstorage.creative_tab": "Meow Storage"
 }

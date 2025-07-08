@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
 
-import xyz.lunala.meowstorage.block.CopperChestBlock;
-import xyz.lunala.meowstorage.block.HugeChestBlock;
+import xyz.lunala.meowstorage.block.*;
+
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class BlockInit {
@@ -17,5 +17,11 @@ public class BlockInit {
 
     public static final RegistryObject<CopperChestBlock> COPPER_CHEST = BLOCKS.register("copper_chest", () -> new CopperChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 
-    public static final RegistryObject<HugeChestBlock> HUGE_CHEST = BLOCKS.register("huge_chest", () -> new HugeChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+    public static final RegistryObject<IronChestBlock> IRON_CHEST = BLOCKS.register("iron_chest", () -> new IronChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+
+    public static final RegistryObject<GoldChestBlock> GOLD_CHEST = BLOCKS.register("gold_chest", () -> new GoldChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+
+    public static final RegistryObject<DiamondChestBlock> DIAMOND_CHEST = BLOCKS.register("diamond_chest", () -> new DiamondChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+
+    public static final RegistryObject<NetheriteChestBlock> NETHERITE_CHEST = BLOCKS.register("netherite_chest", () -> new NetheriteChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 }

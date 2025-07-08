@@ -1,7 +1,13 @@
 {
-  "block.meowstorage.copper_chest": "Copper Chest",
-  "container.meowstorage.copper_chest": "Copper Chest",
-  "block.meowstorage.huge_chest": "Riesige Truhe",
-  "container.meowstorage.huge_chest": "Riesige Truhe",
+  "block.meowstorage.copper_chest": "Kupfer Truhe",
+  "container.meowstorage.copper_chest": "Kupfer Truhe",
+  "block.meowstorage.iron_chest": "Eisen Truhe",
+  "container.meowstorage.iron_chest": "Eisen Truhe",
+  "block.meowstorage.gold_chest": "Gold Truhe",
+  "container.meowstorage.gold_chest": "Gold Truhe",
+  "block.meowstorage.diamond_chest": "Diamant Truhe",
+  "container.meowstorage.diamond_chest": "Diamant Truhe",
+  "block.meowstorage.netherite_chest": "Netherit Truhe",
+  "container.meowstorage.netherite_chest": "Netherit Truhe",
   "item_group.meowstorage.creative_tab": "Miau Lager"
 }

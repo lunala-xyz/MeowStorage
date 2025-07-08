@@ -1,5 +1,5 @@
 {
-  "parent": "meowstorage:block/big_chest",
+  "parent": "meowstorage:block/copper_chest",
   "textures": {
     "0": "meowstorage:block/diamond_chest_texture",
     "particle": "meowstorage:block/diamond_chest_texture"

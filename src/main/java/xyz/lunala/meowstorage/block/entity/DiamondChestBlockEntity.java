@@ -3,41 +3,38 @@ package xyz.lunala.meowstorage.block.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.MenuProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.common.util.LazyOptional;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import xyz.lunala.meowstorage.menu.ChestMenu;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
+import xyz.lunala.meowstorage.menu.ChestMenu;
 import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
-public class HugeChestBlockEntity extends BlockEntity implements MenuProvider, IChestBlockMenuProvider {
-    private final ItemStackHandler inventory = new ItemStackHandler(54 * 2) {
+public class DiamondChestBlockEntity extends BlockEntity implements MenuProvider, IChestBlockMenuProvider {
+    private final ItemStackHandler inventory = new ItemStackHandler(432) {
         @Override
         protected void onContentsChanged(int slot) {
             super.onContentsChanged(slot);
-            HugeChestBlockEntity.this.setChanged();
+            DiamondChestBlockEntity.this.setChanged();
         }
     };
     private final LazyOptional<ItemStackHandler> inventoryOptional = LazyOptional.of(() -> inventory);
-    private Component TITLE = Component.translatable("container.%s.huge_chest".formatted(MODID));
+    private Component TITLE = Component.translatable("container.%s.diamond_chest".formatted(MODID));
 
-    public HugeChestBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityInit.HUGE_CHEST.get(), pos, state);
+    public DiamondChestBlockEntity(BlockPos pos, BlockState state) {
+        super(BlockEntityInit.DIAMOND_CHEST.get(), pos, state);
     }
 
     @Override
@@ -51,7 +48,9 @@ public class HugeChestBlockEntity extends BlockEntity implements MenuProvider, I
     protected void saveAdditional(CompoundTag nbt) {
         super.saveAdditional(nbt);
         CompoundTag modData = new CompoundTag();
+
         modData.put("inventory", inventory.serializeNBT());
+
         nbt.put(MODID, modData);
     }
 
