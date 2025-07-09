@@ -20,5 +20,6 @@ public class CreativeTabInit {
         output.accept(GOLD_CHEST_ITEM.get());
         output.accept(DIAMOND_CHEST_ITEM.get());
         output.accept(NETHERITE_CHEST_ITEM.get());
+        output.accept(BATTERY_BLOCK.get());
     }).build());
 }

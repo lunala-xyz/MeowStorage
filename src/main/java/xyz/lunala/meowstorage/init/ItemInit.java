@@ -21,4 +21,5 @@ public class ItemInit {
     public static final RegistryObject<Item> DIAMOND_CHEST_ITEM = ITEMS.register("diamond_chest", () -> new BlockItem(DIAMOND_CHEST.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> NETHERITE_CHEST_ITEM = ITEMS.register("netherite_chest", () -> new BlockItem(NETHERITE_CHEST.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BATTERY_BLOCK = ITEMS.register("battery_block", () -> new BlockItem(BlockInit.BATTERY_BLOCK.get(), new Item.Properties()));
 }

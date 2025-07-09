@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "meowstorage:block/battery_block"
+    }
+  }
+}
