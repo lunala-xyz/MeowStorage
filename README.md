@@ -23,8 +23,9 @@ Add single item storage block that can hold multiple stacks of one item
 | Gigantic Barrel | Diamond | 432 Stacks = 27648 Items |
 | Colossal Barrel | Netherrite | 864 Stacks = 55296 Items |
 
-### Cats (TBA)
-Add silly little cat easter eggs
+### Cats
+- Calico cat (after Yannick's cats)
+- More soon™️
 
 ### Other features
 TBA
