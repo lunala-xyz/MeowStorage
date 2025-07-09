@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_copper_ingot": {
+    "has_diamond_chest": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:copper_ingot"
+              "minecraft:diamond"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "meowstorage:chest_from_copper"
+        "recipe": "meowstorage:diamond_chest_from_diamond"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_copper_ingot",
+      "has_diamond_chest",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "meowstorage:chest_from_copper"
+      "meowstorage:diamond_chest_from_diamond"
     ]
   },
   "sends_telemetry_event": false

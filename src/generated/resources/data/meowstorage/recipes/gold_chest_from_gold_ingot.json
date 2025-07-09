@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "meowstorage:iron_chest"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "item": "meowstorage:gold_chest"
+  },
+  "show_notification": true
+}
