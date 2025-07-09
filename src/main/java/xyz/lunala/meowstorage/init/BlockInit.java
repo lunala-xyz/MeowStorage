@@ -1,6 +1,7 @@
 package xyz.lunala.meowstorage.init;
 
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -24,4 +25,6 @@ public class BlockInit {
     public static final RegistryObject<DiamondChestBlock> DIAMOND_CHEST = BLOCKS.register("diamond_chest", () -> new DiamondChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 
     public static final RegistryObject<NetheriteChestBlock> NETHERITE_CHEST = BLOCKS.register("netherite_chest", () -> new NetheriteChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+
+    public static final RegistryObject<BatteryBlock> BATTERY_BLOCK = BLOCKS.register("battery_block", () -> new BatteryBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)));
 }
