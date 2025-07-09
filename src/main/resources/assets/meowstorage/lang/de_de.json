@@ -9,5 +9,13 @@
   "container.meowstorage.diamond_chest": "Diamant Truhe",
   "block.meowstorage.netherite_chest": "Netherit Truhe",
   "container.meowstorage.netherite_chest": "Netherit Truhe",
+
+  "block.meowstorage.small_backpack": "Kleiner Rucksack",
+  "container.meowstorage.small_backpack": "Kleiner Rucksack",
+  "block.meowstorage.mid_backpack": "Rucksack",
+  "container.meowstorage.mid_backpack": "Rucksack",
+  "block.meowstorage.big_backpack": "Großer Rucksack",
+  "container.meowstorage.big_backpack": "Großer Rucksack",
+
   "item_group.meowstorage.creative_tab": "Miau Lager"
 }

@@ -1,4 +1,4 @@
-package xyz.lunala.meowstorage.block;
+package xyz.lunala.meowstorage.block.backpacks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,44 +14,46 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.lunala.meowstorage.block.entity.CopperChestBlockEntity;
-import xyz.lunala.meowstorage.block.entity.GoldChestBlockEntity;
+import xyz.lunala.meowstorage.block.entity.BigBackpackEntity;
+import xyz.lunala.meowstorage.block.entity.SmallBackpackEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 
-public class GoldChestBlock extends Block implements EntityBlock {
+public class BigBackpack  extends Block implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public GoldChestBlock(Properties properties) {
+    public BigBackpack(BlockBehaviour.Properties properties) {
         super(properties);
         registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     @Override
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return BlockEntityInit.GOLD_CHEST.get().create(blockPos, blockState);
+        return BlockEntityInit.BIG_BACKPACK.get().create(blockPos, blockState);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
 
-        if(!(blockEntity instanceof GoldChestBlockEntity goldChestBlockEntity)) return InteractionResult.PASS;
+        if(!(blockEntity instanceof BigBackpackEntity bigBackpackEntity)) return InteractionResult.PASS;
 
         if(level.isClientSide) return InteractionResult.SUCCESS;
 
         if(!(player instanceof ServerPlayer sPlayer)) return InteractionResult.CONSUME;
 
-        NetworkHooks.openScreen(sPlayer, goldChestBlockEntity, buf -> {;
+        NetworkHooks.openScreen(sPlayer, bigBackpackEntity, buf -> {;
             buf.writeBlockPos(pos);
         });
 
@@ -66,12 +68,18 @@ public class GoldChestBlock extends Block implements EntityBlock {
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        return defaultBlockState().setValue(FACING, context.getHorizontalDirection());
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return Block.box(1, 0, 1, 15, 14, 15);
+        return switch (state.getValue(FACING)) {
+            case NORTH -> Shapes.or(Block.box(3, 0, 2, 13, 6, 9), Block.box(4, 6, 2, 12, 11, 8));
+            case SOUTH -> Shapes.or(Block.box(3, 0, 7, 13, 6, 14), Block.box(4, 6, 8, 12, 11, 14));
+            case WEST -> Shapes.or(Block.box(2, 0, 3, 9, 6, 13), Block.box(2, 6, 4, 8, 11, 12));
+            case EAST -> Shapes.or(Block.box(7, 0, 3, 14, 6, 13), Block.box(8, 6, 4, 14, 11, 12));
+            default ->  Block.box(0, 0, 0, 16, 16, 16);
+        };
     }
 
     @Override
@@ -87,4 +95,3 @@ public class GoldChestBlock extends Block implements EntityBlock {
         }
     }
 }
-

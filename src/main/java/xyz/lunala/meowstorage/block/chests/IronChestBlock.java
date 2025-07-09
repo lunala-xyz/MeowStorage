@@ -1,4 +1,4 @@
-package xyz.lunala.meowstorage.block;
+package xyz.lunala.meowstorage.block.chests;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,4 +1,4 @@
-package xyz.lunala.meowstorage.block;
+package xyz.lunala.meowstorage.block.chests;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,34 +24,33 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.lunala.meowstorage.block.entity.CopperChestBlockEntity;
-import xyz.lunala.meowstorage.block.entity.DiamondChestBlockEntity;
+import xyz.lunala.meowstorage.block.entity.GoldChestBlockEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 
-public class DiamondChestBlock extends Block implements EntityBlock {
+public class GoldChestBlock extends Block implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public DiamondChestBlock(Properties properties) {
+    public GoldChestBlock(Properties properties) {
         super(properties);
         registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     @Override
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return BlockEntityInit.DIAMOND_CHEST.get().create(blockPos, blockState);
+        return BlockEntityInit.GOLD_CHEST.get().create(blockPos, blockState);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
 
-        if(!(blockEntity instanceof DiamondChestBlockEntity diamondChestBlockEntity)) return InteractionResult.PASS;
+        if(!(blockEntity instanceof GoldChestBlockEntity goldChestBlockEntity)) return InteractionResult.PASS;
 
         if(level.isClientSide) return InteractionResult.SUCCESS;
 
         if(!(player instanceof ServerPlayer sPlayer)) return InteractionResult.CONSUME;
 
-        NetworkHooks.openScreen(sPlayer, diamondChestBlockEntity, buf -> {;
+        NetworkHooks.openScreen(sPlayer, goldChestBlockEntity, buf -> {;
             buf.writeBlockPos(pos);
         });
 
@@ -87,3 +86,4 @@ public class DiamondChestBlock extends Block implements EntityBlock {
         }
     }
 }
+

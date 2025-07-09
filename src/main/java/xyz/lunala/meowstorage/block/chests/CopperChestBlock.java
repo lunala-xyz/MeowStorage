@@ -1,10 +1,7 @@
-package xyz.lunala.meowstorage.block;
+package xyz.lunala.meowstorage.block.chests;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,8 +27,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.block.entity.CopperChestBlockEntity;
-
-import java.util.List;
 
 
 public class CopperChestBlock extends Block implements EntityBlock {
