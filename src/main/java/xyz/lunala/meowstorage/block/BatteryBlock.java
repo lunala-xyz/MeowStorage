@@ -36,7 +36,7 @@ public class BatteryBlock extends Block implements EntityBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return BlockEntityInit.COPPER_CHEST.get().create(blockPos, blockState);
+        return BlockEntityInit.BATTERY_BLOCK.get().create(blockPos, blockState);
     }
 
 }
