@@ -1,5 +1,10 @@
 package xyz.lunala.meowstorage.block;
 
+import net.minecraft.world.Container;
+import net.minecraft.world.Containers;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,6 +30,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.block.entity.CopperChestBlockEntity;
+
+import java.util.List;
 
 
 public class CopperChestBlock extends Block implements EntityBlock {
@@ -71,5 +78,18 @@ public class CopperChestBlock extends Block implements EntityBlock {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return Block.box(1, 0, 1, 15, 14, 15);
+    }
+
+    @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+        if (!pState.is(pNewState.getBlock())) {
+            BlockEntity blockentity = pLevel.getBlockEntity(pPos);
+            if (blockentity instanceof Container) {
+                Containers.dropContents(pLevel, pPos, (Container)blockentity);
+                pLevel.updateNeighbourForOutputSignal(pPos, this);
+            }
+
+            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+        }
     }
 }
