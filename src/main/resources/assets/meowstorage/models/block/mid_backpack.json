@@ -203,6 +203,31 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-86.52, 80.54, 153.07],
+			"translation": [4.25, -4.5, -6]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-86.52, 80.54, 153.07],
+			"translation": [4.25, -4.5, -6]
+		},
+		"ground": {
+			"translation": [0, 4.5, 0]
+		},
+		"gui": {
+			"rotation": [20, -20, 0],
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"head": {
+			"rotation": [0, 180, 0],
+			"translation": [0, 13.5, 0]
+		},
+		"fixed": {
+			"rotation": [0, -180, 0],
+			"translation": [0, 0, -4.25]
+		}
+	},
 	"groups": [
 		{
 			"name": "backpack",
