@@ -2,6 +2,7 @@ package xyz.lunala.meowstorage;
 
 import com.mojang.logging.LogUtils;
 
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,6 +17,7 @@ import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Mixins;
 
 import xyz.lunala.meowstorage.init.*;
+import xyz.lunala.meowstorage.renderer.CalicoCatRender;
 import xyz.lunala.meowstorage.screen.ChestMenuScreen;
 
 @Mod(Meowstorage.MODID)
@@ -32,22 +34,14 @@ public class Meowstorage {
         CreativeTabInit.CREATIVE_MODE_TABS.register(modEventBus);
         BlockEntityInit.BLOCK_ENTITIES.register(modEventBus);
         MenuInit.MENU_TYPES.register(modEventBus);
+        EntityInit.ENTITIES.register(modEventBus);
 
 
         MinecraftForge.EVENT_BUS.register(this);
-    }
 
+
+    }
     public static Logger getLogger() {
         return LOGGER;
-    }
-
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            event.enqueueWork(() -> {
-                MenuScreens.register(MenuInit.CHEST_MENU.get(), ChestMenuScreen::new);
-            });
-        }
     }
 }

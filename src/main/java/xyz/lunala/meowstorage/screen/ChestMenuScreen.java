@@ -15,7 +15,7 @@ import xyz.lunala.meowstorage.util.IMovableSlot;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
-    private static final ResourceLocation BACKGROUND = new ResourceLocation(MODID, "textures/gui/copper_chest_menu.png");
+    private static final ResourceLocation BACKGROUND = ResourceLocation.parse("meowstorage:textures/gui/copper_chest_menu.png");
 
     private static final int VISIBLE_ROWS = 6;
     private static final int SLOT_COLS = 9;
