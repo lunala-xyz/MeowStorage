@@ -2,8 +2,6 @@
 Your all in one storage solution does not include cats by default
 All of this is very much WIP
 
-## Todo's 
-
 ### Chests (Implmented, Shit textures)
 | Type | Material | Size |
 |------|----------|------|
