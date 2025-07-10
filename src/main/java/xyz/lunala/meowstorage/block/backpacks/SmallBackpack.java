@@ -71,6 +71,10 @@ public class SmallBackpack extends Block implements EntityBlock {
         return defaultBlockState().setValue(FACING, context.getHorizontalDirection());
     }
 
+    public BlockState getStateForRendering(){
+        return defaultBlockState();
+    }
+
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {

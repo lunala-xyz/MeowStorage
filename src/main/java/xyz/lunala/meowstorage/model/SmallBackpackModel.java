@@ -1,29 +1,15 @@
 package xyz.lunala.meowstorage.model;
 
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.*;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import static net.minecraft.client.Minecraft.getInstance;
 
-public class SmallBackpackModel implements UnbakedModel {
-    public static final ResourceLocation MODEL_LOCATION = ResourceLocation.parse("meowstorage:models/block/small_backpack");
+public class SmallBackpackModel {
+    private static final ResourceLocation modelLocation = ResourceLocation.parse("meowstorage:block/small_backpack.json");
+    private static final ResourceLocation textureLocation = ResourceLocation.parse("meowstorage:textures/block/small_backpack_texture.png");
 
-    @Override
-    public Collection<ResourceLocation> getDependencies() {
-        return List.of();
-    }
-
-    @Override
-    public void resolveParents(Function<ResourceLocation, UnbakedModel> pResolver) {
-
-    }
-
-    @Override
-    public @Nullable BakedModel bake(ModelBaker pBaker, Function<Material, TextureAtlasSprite> pSpriteGetter, ModelState pState, ResourceLocation pLocation) {
-        return null;
+    public static BakedModel getModel() {
+        return getInstance().getModelManager().getModel(modelLocation);
     }
 }
