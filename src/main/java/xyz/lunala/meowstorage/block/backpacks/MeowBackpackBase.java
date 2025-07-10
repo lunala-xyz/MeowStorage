@@ -38,24 +38,4 @@ public abstract class MeowBackpackBase extends MeowContainer {
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
         return defaultBlockState().setValue(FACING, context.getHorizontalDirection());
     }
-
-    /**
-     * Returns the VoxelShape (collision shape) of the backpack block.
-     * The shape varies based on the facing direction.
-     * @param state The current BlockState.
-     * @param world The BlockGetter (world) the block is in.
-     * @param pos The BlockPos of the block.
-     * @param context The CollisionContext.
-     * @return The VoxelShape of the backpack.
-     */
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return switch (state.getValue(FACING)) {
-            case NORTH -> Shapes.or(Block.box(3, 0, 2, 13, 6, 9), Block.box(4, 6, 2, 12, 11, 8));
-            case SOUTH -> Shapes.or(Block.box(3, 0, 7, 13, 6, 14), Block.box(4, 6, 8, 12, 11, 14));
-            case WEST -> Shapes.or(Block.box(2, 0, 3, 9, 6, 13), Block.box(2, 6, 4, 8, 11, 12));
-            case EAST -> Shapes.or(Block.box(7, 0, 3, 14, 6, 13), Block.box(8, 6, 4, 14, 11, 12));
-            default ->  Block.box(0, 0, 0, 16, 16, 16); // Fallback for unexpected directions
-        };
-    }
 }
