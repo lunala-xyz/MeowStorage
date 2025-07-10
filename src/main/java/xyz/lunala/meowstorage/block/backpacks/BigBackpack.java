@@ -14,6 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -28,46 +29,23 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.lunala.meowstorage.block.entity.BigBackpackEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
+import xyz.lunala.meowstorage.init.BlockInit;
 
-public class BigBackpack  extends Block implements EntityBlock {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+public class BigBackpack extends MeowBackpackBase {
 
-    public BigBackpack(BlockBehaviour.Properties properties) {
+    /**
+     * Constructor for the base backpack block.
+     * Initializes the block with given properties and sets the default facing direction to NORTH.
+     *
+     * @param properties The properties of the block.
+     */
+    public BigBackpack(Properties properties) {
         super(properties);
-        registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     @Override
-    public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return BlockEntityInit.BIG_BACKPACK.get().create(blockPos, blockState);
-    }
-
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-
-        if(!(blockEntity instanceof BigBackpackEntity bigBackpackEntity)) return InteractionResult.PASS;
-
-        if(level.isClientSide) return InteractionResult.SUCCESS;
-
-        if(!(player instanceof ServerPlayer sPlayer)) return InteractionResult.CONSUME;
-
-        NetworkHooks.openScreen(sPlayer, bigBackpackEntity, buf -> {;
-            buf.writeBlockPos(pos);
-        });
-
-        return InteractionResult.CONSUME;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(FACING);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        return defaultBlockState().setValue(FACING, context.getHorizontalDirection());
+    protected BlockEntityType<BigBackpackEntity> getBlockEntityType() {
+        return BlockEntityInit.BIG_BACKPACK.get();
     }
 
     @Override
@@ -79,18 +57,5 @@ public class BigBackpack  extends Block implements EntityBlock {
             case EAST -> Shapes.or(Block.box(5, 0, 1, 14, 9, 15), Block.box(6, 9, 2, 14, 16, 14));
             default ->  Block.box(0, 0, 0, 16, 16, 16);
         };
-    }
-
-    @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (!pState.is(pNewState.getBlock())) {
-            BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof Container) {
-                Containers.dropContents(pLevel, pPos, (Container)blockentity);
-                pLevel.updateNeighbourForOutputSignal(pPos, this);
-            }
-
-            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        }
     }
 }
