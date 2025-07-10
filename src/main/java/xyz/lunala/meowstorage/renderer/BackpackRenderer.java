@@ -8,6 +8,7 @@ import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
@@ -25,6 +26,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 import net.minecraftforge.client.model.renderable.BakedModelRenderable;
+import org.joml.Quaternionf;
 import org.joml.Vector4f;
 import xyz.lunala.meowstorage.init.BlockInit;
 import xyz.lunala.meowstorage.init.ItemInit;
@@ -45,18 +47,48 @@ public class BackpackRenderer extends RenderLayer<AbstractClientPlayer,PlayerMod
 
         if (stack.is(ItemInit.SMALL_BACKPACK_ITEM.get())) {
             renderSmallPack(pPoseStack, pBuffer, pPackedLight, pLivingEntity, stack, pPartialTick);
+        } else if (stack.is(ItemInit.MID_BACKPACK_ITEM.get())) {
+            renderMidPack(pPoseStack, pBuffer, pPackedLight, pLivingEntity, stack, pPartialTick);
+        } else if (stack.is(ItemInit.BIG_BACKPACK_ITEM.get())) {
+            renderBigPack(pPoseStack, pBuffer, pPackedLight, pLivingEntity, stack, pPartialTick);
         }
     }
 
     private void renderSmallPack(PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, AbstractClientPlayer pLivingEntity, ItemStack stack, float pPartialTick) {
-        BakedModel model = SmallBackpackModel.getModel();
-        BakedModelRenderable renderable = BakedModelRenderable.of(model);
         pPoseStack.pushPose();
-        //Render context for renderable.render
 
-        BakedModelRenderable.Context context = new BakedModelRenderable.Context(BlockInit.SMALL_BACKPACK.get().defaultBlockState(), Direction.values(), RandomSource.create(), RandomSource.create().nextInt(), ModelData.builder().build(), new Vector4f());
+        pPoseStack.translate(0.0D, 0.0D, 0.125D); // Adjust position to avoid clipping
+        pPoseStack.mulPose(new Quaternionf().rotateLocalX((float) Math.toRadians(180)));
+        pPoseStack.mulPose(new Quaternionf().rotateLocalY((float) Math.toRadians(180)));
+        pPoseStack.translate(-0.5, -0.6, -0.1);
 
-        renderable.render(pPoseStack, pBuffer, new BackpackRenderTypeLookup(), pPackedLight, OverlayTexture.NO_OVERLAY, pPartialTick, context);
+        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(BlockInit.SMALL_BACKPACK.get().defaultBlockState(), pPoseStack, pBuffer, pPackedLight, OverlayTexture.NO_OVERLAY, ModelData.builder().build(), RenderType.solid());
+
+        pPoseStack.popPose();
+    }
+
+    private void renderMidPack(PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, AbstractClientPlayer pLivingEntity, ItemStack stack, float pPartialTick) {
+        pPoseStack.pushPose();
+
+        pPoseStack.translate(0.0D, 0.0D, 0.125D); // Adjust position to avoid clipping
+        pPoseStack.mulPose(new Quaternionf().rotateLocalX((float) Math.toRadians(180)));
+        pPoseStack.mulPose(new Quaternionf().rotateLocalY((float) Math.toRadians(180)));
+        pPoseStack.translate(-0.5, -0.7, -0.1);
+
+        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(BlockInit.MID_BACKPACK.get().defaultBlockState(), pPoseStack, pBuffer, pPackedLight, OverlayTexture.NO_OVERLAY, ModelData.builder().build(), RenderType.solid());
+
+        pPoseStack.popPose();
+    }
+
+    private void renderBigPack(PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, AbstractClientPlayer pLivingEntity, ItemStack stack, float pPartialTick) {
+        pPoseStack.pushPose();
+
+        pPoseStack.translate(0.0D, 0.0D, 0.125D); // Adjust position to avoid clipping
+        pPoseStack.mulPose(new Quaternionf().rotateLocalX((float) Math.toRadians(180)));
+        pPoseStack.mulPose(new Quaternionf().rotateLocalY((float) Math.toRadians(180)));
+        pPoseStack.translate(-0.5, -0.8, -0.1);
+
+        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(BlockInit.BIG_BACKPACK.get().defaultBlockState(), pPoseStack, pBuffer, pPackedLight, OverlayTexture.NO_OVERLAY, ModelData.builder().build(), RenderType.solid());
 
         pPoseStack.popPose();
     }
