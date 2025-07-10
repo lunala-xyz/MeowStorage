@@ -26,6 +26,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import xyz.lunala.meowstorage.block.entity.MeowChestEntityBase;
 
 /**
  * Base class for all MeowStorage chest blocks.
@@ -83,7 +84,7 @@ public abstract class MeowChestBase extends Block implements EntityBlock {
         BlockEntity blockEntity = level.getBlockEntity(pos);
 
         // Ensure the block entity is a MenuProvider (which all chest block entities should be).
-        if (!(blockEntity instanceof MenuProvider menuProvider)) {
+        if (!(blockEntity instanceof MeowChestEntityBase mewi)) {
             return InteractionResult.PASS;
         }
 
@@ -98,7 +99,7 @@ public abstract class MeowChestBase extends Block implements EntityBlock {
         }
 
         // Open the screen using NetworkHooks, passing the block entity and its position.
-        NetworkHooks.openScreen(sPlayer, menuProvider, buf -> {
+        NetworkHooks.openScreen(sPlayer, mewi, buf -> {
             buf.writeBlockPos(pos);
         });
 
