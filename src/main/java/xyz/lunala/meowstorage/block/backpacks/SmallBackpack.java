@@ -4,6 +4,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import xyz.lunala.meowstorage.block.entity.SmallBackpackEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 
+import java.util.Properties;
+
 public class SmallBackpack extends MeowBackpackBase {
 
     /**
