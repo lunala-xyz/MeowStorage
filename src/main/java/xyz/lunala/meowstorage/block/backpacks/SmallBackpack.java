@@ -30,6 +30,10 @@ public class SmallBackpack extends MeowBackpackBase {
         return BlockEntityInit.SMALL_BACKPACK.get();
     }
 
+    public BlockState getStateForRendering(){
+        return defaultBlockState();
+    }
+
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
