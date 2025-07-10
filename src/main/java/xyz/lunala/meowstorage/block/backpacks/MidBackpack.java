@@ -27,7 +27,6 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.lunala.meowstorage.block.entity.MidBackpackEntity;
-import xyz.lunala.meowstorage.block.entity.SmallBackpackEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 
 public class MidBackpack extends Block implements EntityBlock {
