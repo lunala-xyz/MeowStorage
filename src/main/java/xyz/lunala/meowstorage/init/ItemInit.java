@@ -1,10 +1,12 @@
 package xyz.lunala.meowstorage.init;
 
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
+import xyz.lunala.meowstorage.item.BackpackItem;
 
 import static xyz.lunala.meowstorage.init.BlockInit.*;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
@@ -32,15 +34,15 @@ public class ItemInit {
             NETHERITE_CHEST.get(),
             new Item.Properties()));
 
-    public static final RegistryObject<Item> SMALL_BACKPACK_ITEM = ITEMS.register("small_backpack", () -> new BlockItem(
+    public static final RegistryObject<Item> SMALL_BACKPACK_ITEM = ITEMS.register("small_backpack", () -> new BackpackItem(
             SMALL_BACKPACK.get(),
             new Item.Properties().stacksTo(1)));
 
-    public static final RegistryObject<Item> MID_BACKPACK_ITEM = ITEMS.register("mid_backpack", () -> new BlockItem(
+    public static final RegistryObject<Item> MID_BACKPACK_ITEM = ITEMS.register("mid_backpack", () -> new BackpackItem(
             MID_BACKPACK.get(),
             new Item.Properties().stacksTo(1)));
 
-    public static final RegistryObject<Item> BIG_BACKPACK_ITEM = ITEMS.register("big_backpack", () -> new BlockItem(
+    public static final RegistryObject<Item> BIG_BACKPACK_ITEM = ITEMS.register("big_backpack", () -> new BackpackItem(
             BIG_BACKPACK.get(),
             new Item.Properties().stacksTo(1)));
 }
