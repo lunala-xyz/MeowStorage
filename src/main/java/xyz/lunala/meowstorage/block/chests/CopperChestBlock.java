@@ -2,6 +2,7 @@ package xyz.lunala.meowstorage.block.chests;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,6 +26,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
+import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.block.entity.CopperChestBlockEntity;
 

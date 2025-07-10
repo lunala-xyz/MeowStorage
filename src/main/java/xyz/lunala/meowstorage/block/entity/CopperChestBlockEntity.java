@@ -1,5 +1,8 @@
 package xyz.lunala.meowstorage.block.entity;
 
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,7 +29,7 @@ import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
-public class CopperChestBlockEntity extends BlockEntity implements MenuProvider, IChestBlockMenuProvider {
+public class CopperChestBlockEntity extends BlockEntity implements MenuProvider, IChestBlockMenuProvider, Container {
     private final ItemStackHandler inventory = new ItemStackHandler(54) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -100,5 +103,47 @@ public class CopperChestBlockEntity extends BlockEntity implements MenuProvider,
 
     public LazyOptional<ItemStackHandler> getOptional() {
         return inventoryOptional;
+    }
+
+    @Override
+    public int getContainerSize() {
+        return inventory.getSlots();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public ItemStack getItem(int slot) {
+        return inventory.getStackInSlot(slot);
+    }
+
+    @Override
+    public ItemStack removeItem(int slot, int amount) {
+        return inventory.extractItem(slot, amount, false);
+    }
+
+    @Override
+    public ItemStack removeItemNoUpdate(int slot) {
+        return inventory.extractItem(slot, 1, false);
+    }
+
+    @Override
+    public void setItem(int slot, ItemStack stack) {
+        inventory.setStackInSlot(slot, stack);
+    }
+
+    @Override
+    public boolean stillValid(Player player) {
+        return false;
+    }
+
+    @Override
+    public void clearContent() {
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false);
+        }
     }
 }
