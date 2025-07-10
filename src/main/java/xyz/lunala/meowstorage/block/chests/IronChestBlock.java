@@ -10,6 +10,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -31,62 +32,15 @@ import org.jetbrains.annotations.Nullable;
 import xyz.lunala.meowstorage.block.entity.IronChestBlockEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 
-public class IronChestBlock extends Block implements EntityBlock {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+public class IronChestBlock extends MeowChestBase {
 
     public IronChestBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     @Override
-    public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return BlockEntityInit.IRON_CHEST.get().create(blockPos, blockState);
+    protected BlockEntityType<IronChestBlockEntity> getBlockEntityType() {
+        return BlockEntityInit.IRON_CHEST.get();
     }
 
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-
-        if(!(blockEntity instanceof IronChestBlockEntity ironChestBlockEntity)) return InteractionResult.PASS;
-
-        if(level.isClientSide) return InteractionResult.SUCCESS;
-
-        if(!(player instanceof ServerPlayer sPlayer)) return InteractionResult.CONSUME;
-
-        NetworkHooks.openScreen(sPlayer, ironChestBlockEntity, buf -> {;
-            buf.writeBlockPos(pos);
-        });
-
-        return InteractionResult.CONSUME;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(FACING);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return Block.box(1, 0, 1, 15, 14, 15);
-    }
-
-    @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (!pState.is(pNewState.getBlock())) {
-            BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof Container) {
-                Containers.dropContents(pLevel, pPos, (Container)blockentity);
-                pLevel.updateNeighbourForOutputSignal(pPos, this);
-            }
-
-            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        }
-    }
 }

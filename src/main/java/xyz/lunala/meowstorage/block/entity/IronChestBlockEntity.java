@@ -25,77 +25,19 @@ import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
-public class IronChestBlockEntity extends BlockEntity implements MenuProvider, IChestBlockMenuProvider {
-    private final ItemStackHandler inventory = new ItemStackHandler(108) {
-        @Override
-        protected void onContentsChanged(int slot) {
-            super.onContentsChanged(slot);
-            IronChestBlockEntity.this.setChanged();
-        }
-    };
-    private final LazyOptional<ItemStackHandler> inventoryOptional = LazyOptional.of(() -> inventory);
-    private Component TITLE = Component.translatable("container.%s.iron_chest".formatted(MODID));
-
+public class IronChestBlockEntity extends MeowChestEntityBase {
+    // The number of inventory slots for the Diamond Chest.
+    public static final int INVENTORY_SIZE = 108;
+    // The display title for the Diamond Chest's GUI.
+    private static final String MATERIAL = "iron";
+    /**
+     * Constructor for the base chest block entity.
+     * Initializes the block entity with its type, position, state, inventory size, and display title.
+     *
+     * @param pos           The BlockPos of the block entity.
+     * @param state         The BlockState of the block entity.
+     */
     public IronChestBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityInit.IRON_CHEST.get(), pos, state);
-    }
-
-    @Override
-    public void load(CompoundTag nbt) {
-        super.load(nbt);
-        CompoundTag modData = nbt.getCompound(MODID);
-        inventory.deserializeNBT(modData.getCompound("inventory"));
-    }
-
-    @Override
-    protected void saveAdditional(CompoundTag nbt) {
-        super.saveAdditional(nbt);
-        CompoundTag modData = new CompoundTag();
-        modData.put("inventory", inventory.serializeNBT());
-        nbt.put(MODID, modData);
-    }
-
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
-    }
-
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
-    }
-
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        inventoryOptional.invalidate();
-    }
-
-    @Override
-    public CompoundTag getUpdateTag() {
-        CompoundTag modData = super.getUpdateTag();
-
-        saveAdditional(modData);
-
-        return modData;
-    }
-
-    @Override
-    public void handleUpdateTag(CompoundTag nbt) {
-        load(nbt);
-    }
-
-    @Override
-    public Component getDisplayName() {
-        return TITLE;
-    }
-
-    @Override
-    public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player player) {
-        return new ChestMenu(pContainerId, pPlayerInventory, this);
-    }
-
-    public LazyOptional<ItemStackHandler> getOptional() {
-        return inventoryOptional;
+        super(BlockEntityInit.IRON_CHEST.get(), pos, state, INVENTORY_SIZE, MATERIAL);
     }
 }

@@ -1,100 +1,31 @@
 package xyz.lunala.meowstorage.block.entity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.ItemStackHandler;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
-import xyz.lunala.meowstorage.menu.ChestMenu;
-import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
-public class DiamondChestBlockEntity extends BlockEntity implements MenuProvider, IChestBlockMenuProvider {
-    private final ItemStackHandler inventory = new ItemStackHandler(432) {
-        @Override
-        protected void onContentsChanged(int slot) {
-            super.onContentsChanged(slot);
-            DiamondChestBlockEntity.this.setChanged();
-        }
-    };
-    private final LazyOptional<ItemStackHandler> inventoryOptional = LazyOptional.of(() -> inventory);
-    private Component TITLE = Component.translatable("container.%s.diamond_chest".formatted(MODID));
+/**
+ * Block entity for the Diamond Chest.
+ * Extends MeowChestBaseBlockEntity to inherit common chest block entity functionalities.
+ */
+public class DiamondChestBlockEntity extends MeowChestEntityBase {
 
+    // The number of inventory slots for the Diamond Chest.
+    public static final int INVENTORY_SIZE = 432;
+    // The display title for the Diamond Chest's GUI.
+    private static final String MATERIAL = "diamond";
+
+    /**
+     * Constructor for the DiamondChestBlockEntity.
+     * Calls the super constructor of MeowChestBaseBlockEntity with the specific
+     * BlockEntityType, position, state, inventory size, and title for the Diamond Chest.
+     * @param pos The BlockPos of the block entity.
+     * @param state The BlockState of the block entity.
+     */
     public DiamondChestBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityInit.DIAMOND_CHEST.get(), pos, state);
-    }
-
-    @Override
-    public void load(CompoundTag nbt) {
-        super.load(nbt);
-        CompoundTag modData = nbt.getCompound(MODID);
-        inventory.deserializeNBT(modData.getCompound("inventory"));
-    }
-
-    @Override
-    protected void saveAdditional(CompoundTag nbt) {
-        super.saveAdditional(nbt);
-        CompoundTag modData = new CompoundTag();
-
-        modData.put("inventory", inventory.serializeNBT());
-
-        nbt.put(MODID, modData);
-    }
-
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
-    }
-
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
-    }
-
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        inventoryOptional.invalidate();
-    }
-
-    @Override
-    public CompoundTag getUpdateTag() {
-        CompoundTag modData = super.getUpdateTag();
-
-        saveAdditional(modData);
-
-        return modData;
-    }
-
-    @Override
-    public void handleUpdateTag(CompoundTag nbt) {
-        load(nbt);
-    }
-
-    @Override
-    public Component getDisplayName() {
-        return TITLE;
-    }
-
-    @Override
-    public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player player) {
-        return new ChestMenu(pContainerId, pPlayerInventory, this);
-    }
-
-    public LazyOptional<ItemStackHandler> getOptional() {
-        return inventoryOptional;
+        super(BlockEntityInit.DIAMOND_CHEST.get(), pos, state, INVENTORY_SIZE, MATERIAL);
     }
 }
