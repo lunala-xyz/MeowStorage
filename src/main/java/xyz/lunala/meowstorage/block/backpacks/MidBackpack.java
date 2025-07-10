@@ -29,7 +29,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.lunala.meowstorage.block.entity.BigBackpackEntity;
 import xyz.lunala.meowstorage.block.entity.MidBackpackEntity;
-import xyz.lunala.meowstorage.block.entity.SmallBackpackEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 
 public class MidBackpack extends MeowBackpackBase {
@@ -52,11 +51,11 @@ public class MidBackpack extends MeowBackpackBase {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
-            case NORTH -> Shapes.or(Block.box(3, 0, 2, 13, 6, 9), Block.box(4, 6, 2, 12, 11, 8));
-            case SOUTH -> Shapes.or(Block.box(3, 0, 7, 13, 6, 14), Block.box(4, 6, 8, 12, 11, 14));
-            case WEST -> Shapes.or(Block.box(2, 0, 3, 9, 6, 13), Block.box(2, 6, 4, 8, 11, 12));
-            case EAST -> Shapes.or(Block.box(7, 0, 3, 14, 6, 13), Block.box(8, 6, 4, 14, 11, 12));
-            default -> Block.box(0, 0, 0, 16, 16, 16);
+            case NORTH -> Shapes.or(Block.box(2, 0, 2, 14, 8, 10), Block.box(3, 8, 2, 13, 14, 9));
+            case SOUTH -> Shapes.or(Block.box(2, 0, 6, 14, 8, 14), Block.box(3, 6, 7, 13, 14, 14));
+            case WEST -> Shapes.or(Block.box(2, 0, 2, 10, 8, 14), Block.box(2, 8, 3, 9, 14, 13));
+            case EAST -> Shapes.or(Block.box(6, 0, 2, 14, 8, 14), Block.box(7, 6, 3, 14, 14, 13));
+            default ->  Block.box(0, 0, 0, 16, 16, 16);
         };
     }
 }
