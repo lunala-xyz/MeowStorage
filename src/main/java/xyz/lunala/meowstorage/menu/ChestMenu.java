@@ -11,6 +11,7 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
+import org.jetbrains.annotations.NotNull;
 import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.init.MenuInit;
 import xyz.lunala.meowstorage.util.IChestBlockMenuProvider;
@@ -33,42 +34,48 @@ public class ChestMenu extends AbstractContainerMenu {
             throw new IllegalStateException("Expected CopperChestBlockEntity but got " + blockEntity.getClass().getCanonicalName());
         }
 
+        assert blockEntity.getLevel() != null;
         this.levelAccess = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
 
-        createPlayerHotbar(playerInventory);
-        createPlayerInventory(playerInventory);
-        createBlockEntityInventory(this.chestBlockMenuProvider);
-    }
-
-    private void createBlockEntityInventory(IChestBlockMenuProvider blockEntity) {
-        blockEntity.getOptional().ifPresent(inventory -> {
-            for (int i = 0; i < inventory.getSlots(); i++) {
-                this.addSlot(new SlotItemHandler(inventory,
-                        i,
-                        8 + (i % 9) * 18,
-                        18 + (i / 9) * 18));
+        this.chestBlockMenuProvider.getOptional().ifPresent(inventory -> {;
+            if (inventory.getSlots() <= 27) {
+                createPlayerInventory(playerInventory, ChestMode.SINGLE);
+                createPlayerHotbar(playerInventory, ChestMode.SINGLE);
+            } else {
+                createPlayerInventory(playerInventory, ChestMode.DOUBLE);
+                createPlayerHotbar(playerInventory, ChestMode.DOUBLE);
             }
+            createBlockEntityInventory(inventory);
         });
     }
 
-    private void createPlayerInventory(Inventory playerInventory) {
+    private void createBlockEntityInventory(ItemStackHandler inventory) {
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            this.addSlot(new SlotItemHandler(inventory,
+                    i,
+                    8 + (i % 9) * 18,
+                    18 + (i / 9) * 18));
+        }
+    }
+
+    private void createPlayerInventory(Inventory playerInventory, ChestMode mode) {
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 9; x++) {
-                this.addSlot(new Slot(playerInventory, x + y * 9 + 9, 8 + x * 18, 138 + y * 18));
+                this.addSlot(new Slot(playerInventory, x + y * 9 + 9, 8 + x * 18, mode.getOffset() + y * 18));
             }
         }
     }
 
-    private void createPlayerHotbar(Inventory playerInventory) {
+    private void createPlayerHotbar(Inventory playerInventory, ChestMode mode) {
         for (int i = 0; i < 9; i++) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 196));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, mode.getOffset() + 58));
         }
     }
 
     // Don't touch this, I don't know either
     // Just leave it there
     @Override
-    public ItemStack quickMoveStack(Player pPlayer, int pIndex) {
+    public @NotNull ItemStack quickMoveStack(Player pPlayer, int pIndex) {
         Slot fromSlot = getSlot(pIndex);
         ItemStack fromStack = fromSlot.getItem();
 
@@ -103,5 +110,25 @@ public class ChestMenu extends AbstractContainerMenu {
     public boolean stillValid(Player pPlayer) {
         if (!(chestBlockMenuProvider instanceof BlockEntity blockEntity)) throw new IllegalStateException("Expected BlockEntity but got " + chestBlockMenuProvider.getClass().getCanonicalName());
         return stillValid(this.levelAccess, pPlayer, blockEntity.getBlockState().getBlock());
+    }
+
+    /**
+     * Enum representing the different mode offsets, it just exists to make the magic numbers explain themselves more
+     * Basically all it does is define the Y offsets for where the player inventory starts in the chest GUI.
+     * Ref: meowstorage:textures/gui
+     */
+    private static enum ChestMode {
+        SINGLE(84),
+        DOUBLE(138);
+
+        private final int offset;
+
+        ChestMode(int offset) {
+            this.offset = offset;
+        }
+
+        public int getOffset() {
+            return offset;
+        }
     }
 }

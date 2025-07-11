@@ -12,16 +12,15 @@ import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.menu.ChestMenu;
 import xyz.lunala.meowstorage.util.IMovableSlot;
 
-import static xyz.lunala.meowstorage.Meowstorage.MODID;
-
 public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
-    private static final ResourceLocation BACKGROUND = ResourceLocation.parse("meowstorage:textures/gui/copper_chest_menu.png");
+    private static final ResourceLocation BIG_BACKGROUND = ResourceLocation.parse("meowstorage:textures/gui/big_chest_menu.png");
+    private static final ResourceLocation SMALL_BACKGROUND = ResourceLocation.parse("meowstorage:textures/gui/small_chest_menu.png");
 
     private static final int VISIBLE_ROWS = 6;
     private static final int SLOT_COLS = 9;
     private final int totalRows;
-    private final int magicScrollNumber = 4;
-    private int scrollOffset = magicScrollNumber;
+    private final int playerInventoryRows = 4;
+    private int scrollOffset = 0;
 
     private boolean needsScrollbar = false;
     private int scrollBarLeft = 177;
@@ -39,12 +38,15 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
 
     public ChestMenuScreen(ChestMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
+        this.totalRows = (int)Math.ceil(getInventorySlots() / (float)SLOT_COLS) - playerInventoryRows;
+
+        Meowstorage.getLogger().info("Total rows: {}", totalRows);
+
         this.imageWidth = 176;
-        this.imageHeight = 220;
+        this.imageHeight = totalRows > 3 ? 220 : 166;
+        this.inventoryLabelY = totalRows > 3 ? 127 : 73;
 
-        this.totalRows = (int)Math.ceil(getInventorySlots() / (float)SLOT_COLS);
-
-        needsScrollbar = Math.max(0, totalRows - VISIBLE_ROWS) > magicScrollNumber;
+        needsScrollbar = Math.max(0, totalRows - VISIBLE_ROWS) > 0;
         Meowstorage.getLogger().info(String.valueOf(Math.max(0, totalRows - VISIBLE_ROWS)));
         rearrange();
     }
@@ -60,8 +62,8 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
         if (maxOffset > 0) {
             scrollOffset = scrollOffset - (int)Math.signum(delta);
 
-            if (scrollOffset < magicScrollNumber) {
-                scrollOffset = magicScrollNumber;
+            if (scrollOffset < 0) {
+                scrollOffset = 0;
             } else if (scrollOffset > maxOffset) {
                 scrollOffset = maxOffset;
             }
@@ -73,6 +75,8 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
     }
 
     private void rearrange() {
+        if (!needsScrollbar) return;
+
         for (int i = (9 * 3 + 9); i < getInventorySlots(); i++) {
             int row = i / SLOT_COLS;
             int col = i % SLOT_COLS;
@@ -99,14 +103,12 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         renderBackground(guiGraphics);
-        guiGraphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
-
-        this.inventoryLabelY = 127;
+        guiGraphics.blit(getAppropriateBackground(), this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
 
         if (needsScrollbar) {
-            guiGraphics.blit(BACKGROUND, this.leftPos + scrollBarLeft, this.topPos + scrollBarTop, scrollBarLeft, scrollBarTop, scrollBarWidth, scrollBarHeight);
+            guiGraphics.blit(BIG_BACKGROUND, this.leftPos + scrollBarLeft, this.topPos + scrollBarTop, scrollBarLeft, scrollBarTop, scrollBarWidth, scrollBarHeight);
 
-            int floaterOffset = (int) (((scrollOffset - magicScrollNumber) / (double) (totalRows - VISIBLE_ROWS - magicScrollNumber)) * (floaterLowerLimit - floaterUpperLimit));
+            int floaterOffset = (int) (((scrollOffset) / (double) (totalRows - VISIBLE_ROWS)) * (floaterLowerLimit - floaterUpperLimit));
 
             if(floaterDragged) {
                 floaterOffset = mouseY - (int) (floaterHeight * 1.5);
@@ -118,13 +120,21 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
                 }
             }
 
-            guiGraphics.blit(BACKGROUND, this.leftPos + 181, this.topPos + floaterTop + floaterOffset, floaterLeft, floaterTop, floaterWidth, floaterHeight);
+            guiGraphics.blit(BIG_BACKGROUND, this.leftPos + 181, this.topPos + floaterTop + floaterOffset, floaterLeft, floaterTop, floaterWidth, floaterHeight);
+        }
+    }
+
+    private ResourceLocation getAppropriateBackground() {
+        if (totalRows > 3) {
+            return BIG_BACKGROUND;
+        } else {
+            return SMALL_BACKGROUND;
         }
     }
 
     @Override
     public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
-        int floaterOffset = (int) (((scrollOffset - magicScrollNumber) / (double) (totalRows - VISIBLE_ROWS - magicScrollNumber)) * (floaterLowerLimit - floaterUpperLimit));
+        int floaterOffset = (int) (((scrollOffset) / (double) (totalRows - VISIBLE_ROWS)) * (floaterLowerLimit - floaterUpperLimit));
 
         if (this.isHovering(181, floaterTop + floaterOffset, floaterWidth, floaterHeight, pMouseX, pMouseY)) {
             floaterDragged = true;
@@ -157,11 +167,10 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
                 pMouseY -
                 (this.topPos + floaterTop))
                 / (double) (floaterLowerLimit - floaterUpperLimit))
-                * (totalRows - VISIBLE_ROWS - magicScrollNumber))
-                + magicScrollNumber;
+                * (totalRows - VISIBLE_ROWS));
 
-        if (scrollOffset < magicScrollNumber) {
-            scrollOffset = magicScrollNumber;
+        if (scrollOffset < 0) {
+            scrollOffset = 0;
         } else if (scrollOffset > maxOffset) {
             scrollOffset = maxOffset;
         }
