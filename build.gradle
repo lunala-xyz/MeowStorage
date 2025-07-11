@@ -135,11 +135,17 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
-    maven { // JEI
-        url "https://maven.blamejared.com"
-    }
-    maven { // TOP
-        url "https://maven.k-4u.nl"
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        forRepositories(fg.repository) // Only add this if you're using ForgeGradle, otherwise remove this line
+        filter {
+            includeGroup "maven.modrinth"
+        }
     }
 }
 
@@ -150,23 +156,16 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-
-    // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
-    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-
-    implementation fg.deobf(project.dependencies.create("mcjty.theoneprobe:theoneprobe:${top_version}") {
-        transitive = false
-    })
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
-    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    runtimeOnly fg.deobf("maven.modrinth:jade:11.13.1+forge")
+    runtimeOnly fg.deobf("maven.modrinth:guideme:20.1.11")
+    runtimeOnly fg.deobf("maven.modrinth:cloth-config:11.1.136+forge")
+    runtimeOnly fg.deobf("maven.modrinth:architectury-api:9.2.14+forge")
+    runtimeOnly fg.deobf("maven.modrinth:jei:4r3Kp7U7")
+    runtimeOnly fg.deobf("maven.modrinth:toms-storage:1.20-1.7.1")
+    runtimeOnly fg.deobf("maven.modrinth:ae2:15.4.5")
+    runtimeOnly fg.deobf("maven.modrinth:powah:5.0.10-forge")
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
@@ -183,6 +182,7 @@ mixin {
     add sourceSets.main, 'meowstorage.refmap.json'
     config 'meowstorage.mixins.json'
 }
+
 
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
