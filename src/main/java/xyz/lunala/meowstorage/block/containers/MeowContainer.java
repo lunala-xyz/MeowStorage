@@ -2,13 +2,14 @@ package xyz.lunala.meowstorage.block.containers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -156,7 +157,14 @@ public abstract class MeowContainer extends Block implements EntityBlock {
             if (blockentity instanceof Container) {
                 Containers.dropContents(pLevel, pPos, (Container) blockentity);
                 pLevel.updateNeighbourForOutputSignal(pPos, this);
+
+                for(ItemStack drop : this.getDrops(pState, (ServerLevel) pLevel, pPos, blockentity)) {
+                    if (!drop.isEmpty()) {
+                        Containers.dropItemStack(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), drop);
+                    }
+                }
             }
+
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
         }
     }

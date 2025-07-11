@@ -24,7 +24,7 @@ import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class SmallBackpackEntity extends MeowBackpackEntityBase {
 
-    public static final int INVENTORY_SIZE = 54;
+    public static final int INVENTORY_SIZE = 27;
     // The display title for the Diamond Chest's GUI.
     private static final String TITLE = "small_backpack";
     /**
