@@ -6,7 +6,7 @@ import xyz.lunala.meowstorage.init.BlockEntityInit;
 
 public class BigBackpackEntity extends MeowBackpackEntityBase {
 
-    public static final int INVENTORY_SIZE = 54 * 4;
+    public static final int INVENTORY_SIZE = 27 * 4;
     // The display title for the Diamond Chest's GUI.
     private static final String TITLE = "big_backpack";
     /**

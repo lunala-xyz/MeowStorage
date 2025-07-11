@@ -65,6 +65,15 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
     }
 
     /**
+     * Sets a custom name for the container.
+     * This is used to display a specific title in the GUI.
+     * @param name The Component representing the custom name.
+     */
+    public void setCustomName(Component name) {
+        this.TITLE = name;
+    }
+
+    /**
      * Loads the block entity's data from the NBT tag.
      * This includes deserializing the inventory.
      * @param nbt The CompoundTag containing the block entity's saved data.
@@ -76,6 +85,15 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
         CompoundTag modData = nbt.getCompound(MODID);
         // Deserialize the inventory from the NBT.
         inventory.deserializeNBT(modData.getCompound("inventory"));
+    }
+
+
+    /**
+     * Public accessor to load.
+     * @param nbt The CompoundTag to load data from.
+     */
+    public void loadFrom(CompoundTag nbt) {
+        load(nbt);
     }
 
     /**
@@ -90,6 +108,14 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
         // Serialize the inventory and put it into the mod-specific data.
         modData.put("inventory", inventory.serializeNBT());
         nbt.put(MODID, modData);
+    }
+
+    /**
+     * Public accessor to saveAdditional.
+     * @param nbt The CompoundTag to save data to.
+     */
+    public void saveTo(CompoundTag nbt) {
+        saveAdditional(nbt);
     }
 
     /**
