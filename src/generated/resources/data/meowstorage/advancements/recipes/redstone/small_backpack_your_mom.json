@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "meowstorage:small_backpack_your_mom"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_translation{key='chat.square_brackets', args=[empty[siblings=[translation{key='item.minecraft.leather', args=[]}]]]}[style={color=white,hoverEvent=HoverEvent{action=<action show_item>, value='net.minecraft.network.chat.HoverEvent$ItemStackInfo@eb5ae5cc'}}]": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:leather"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_translation{key='chat.square_brackets', args=[empty[siblings=[translation{key='item.minecraft.leather', args=[]}]]]}[style={color=white,hoverEvent=HoverEvent{action=<action show_item>, value='net.minecraft.network.chat.HoverEvent$ItemStackInfo@eb5ae5cc'}}]",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "meowstorage:small_backpack_your_mom"
+    ]
+  },
+  "sends_telemetry_event": false
+}

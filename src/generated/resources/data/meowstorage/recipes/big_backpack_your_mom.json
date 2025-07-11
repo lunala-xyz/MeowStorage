@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "meowstorage:mid_backpack"
+    },
+    "B": {
+      "item": "meowstorage:iron_chest"
+    },
+    "C": {
+      "item": "minecraft:string"
+    },
+    "D": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "CDC",
+    "DAD",
+    "DBD"
+  ],
+  "result": {
+    "item": "meowstorage:big_backpack"
+  },
+  "show_notification": true
+}

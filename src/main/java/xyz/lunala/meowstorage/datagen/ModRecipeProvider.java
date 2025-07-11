@@ -112,7 +112,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         // Mid Backpack
         backpackFrom(recipeOutput, ItemInit.SMALL_BACKPACK_ITEM.get(), ItemInit.COPPER_CHEST_ITEM.get(), ItemInit.MID_BACKPACK_ITEM.get(), "mid_backpack");
         // Big Backpack
-        backpackFrom(recipeOutput, ItemInit.SMALL_BACKPACK_ITEM.get(), ItemInit.IRON_CHEST_ITEM.get(), ItemInit.MID_BACKPACK_ITEM.get(), "mid_backpack");
+        backpackFrom(recipeOutput, ItemInit.MID_BACKPACK_ITEM.get(), ItemInit.IRON_CHEST_ITEM.get(), ItemInit.BIG_BACKPACK_ITEM.get(), "big_backpack");
     }
 
     protected static void backpackFrom(Consumer<FinishedRecipe> recipeOutput, ItemLike centerPiece, ItemLike upgrade, ItemLike result, String recipeName) {
@@ -124,7 +124,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('A', centerPiece)
                 .define('C', Items.STRING)
                 .define('D', Items.LEATHER)
-                .save(recipeOutput, Meowstorage.MODID + ":" + recipeName)
+                .unlockedBy("has_" + upgrade.asItem().getDefaultInstance().getDisplayName(), has(upgrade))
+                .save(recipeOutput, Meowstorage.MODID + ":" + recipeName + "_your_mom");
         ;
     }
 }
