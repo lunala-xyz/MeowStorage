@@ -1,5 +1,5 @@
 # Meow Storage
-Your all in one storage solution does not include cats by default
+Your all in one storage solution
 All of this is very much WIP
 
 ### Chests (Implmented, Shit textures)
@@ -11,12 +11,12 @@ All of this is very much WIP
 | Diamond Chest | Diamond | 16x Chest = 432 Slots |
 | Netherrite Chest | Netherrite | 32x Chest = 864 Slots |
 
-### Backpacks (WIP)
-| Type | Material | Size |
-|------|----------|------|
-| Small Backpack | -- | 27 Stacks = 1728 Items |
-| Backpack | -- | 54 Stacks = 3456 Items |
-| Big Backpack | -- | 108 Stacks = 6912 Items |
+### Backpacks
+| Type | Size |
+|------|------|
+| Small Backpack | 27 Stacks = 1728 Items |
+| Backpack | 54 Stacks = 3456 Items |
+| Big Backpack | 108 Stacks = 6912 Items |
 
 ### Barrels (TBA)
 Add single item storage block that can hold multiple stacks of one item
