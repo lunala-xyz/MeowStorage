@@ -62,8 +62,8 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
         if (maxOffset > 0) {
             scrollOffset = scrollOffset - (int)Math.signum(delta);
 
-            if (scrollOffset < 0) {
-                scrollOffset = 0;
+            if (scrollOffset < playerInventoryRows) {
+                scrollOffset = playerInventoryRows;
             } else if (scrollOffset > maxOffset) {
                 scrollOffset = maxOffset;
             }
@@ -108,16 +108,16 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
         if (needsScrollbar) {
             guiGraphics.blit(BIG_BACKGROUND, this.leftPos + scrollBarLeft, this.topPos + scrollBarTop, scrollBarLeft, scrollBarTop, scrollBarWidth, scrollBarHeight);
 
-            int floaterOffset = (int) (((scrollOffset) / (double) (totalRows - VISIBLE_ROWS)) * (floaterLowerLimit - floaterUpperLimit));
+            int floaterOffset = (int) (((scrollOffset - playerInventoryRows) / (double) (totalRows - VISIBLE_ROWS - playerInventoryRows)) * (floaterLowerLimit - floaterUpperLimit));
 
             if(floaterDragged) {
                 floaterOffset = mouseY - (int) (floaterHeight * 1.5);
+            }
 
-                if (floaterOffset < 0) {
-                    floaterOffset = 0;
-                } else if (floaterOffset > 99) {
-                    floaterOffset = 99;
-                }
+            if (floaterOffset < 0) {
+                floaterOffset = 0;
+            } else if (floaterOffset > 99) {
+                floaterOffset = 99;
             }
 
             guiGraphics.blit(BIG_BACKGROUND, this.leftPos + 181, this.topPos + floaterTop + floaterOffset, floaterLeft, floaterTop, floaterWidth, floaterHeight);
@@ -134,7 +134,7 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
 
     @Override
     public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
-        int floaterOffset = (int) (((scrollOffset) / (double) (totalRows - VISIBLE_ROWS)) * (floaterLowerLimit - floaterUpperLimit));
+        int floaterOffset = (int) (((scrollOffset - playerInventoryRows) / (double) (totalRows - VISIBLE_ROWS - playerInventoryRows)) * (floaterLowerLimit - floaterUpperLimit));
 
         if (this.isHovering(181, floaterTop + floaterOffset, floaterWidth, floaterHeight, pMouseX, pMouseY)) {
             floaterDragged = true;
@@ -169,8 +169,8 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
                 / (double) (floaterLowerLimit - floaterUpperLimit))
                 * (totalRows - VISIBLE_ROWS));
 
-        if (scrollOffset < 0) {
-            scrollOffset = 0;
+        if (scrollOffset < playerInventoryRows) {
+            scrollOffset = playerInventoryRows;
         } else if (scrollOffset > maxOffset) {
             scrollOffset = maxOffset;
         }
