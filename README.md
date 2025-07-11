@@ -1,15 +1,15 @@
 # Meow Storage
-Your all in one storage solution
+Your all-in-one storage solution
 All of this is very much WIP
 
-### Chests (Implmented, Shit textures)
+### Chests (Implemented, Shit textures)
 | Type | Material | Size |
 |------|----------|------|
 | Copper Chest | Copper | 2x Chest = 54 Slots |
 | Iron Chest | Iron | 4x Chest = 108 Slots |
 | Gold Chest | Gold | 8x Chest = 216 Slots |
 | Diamond Chest | Diamond | 16x Chest = 432 Slots |
-| Netherrite Chest | Netherrite | 32x Chest = 864 Slots |
+| Netherite Chest | Netherite | 32x Chest = 864 Slots |
 
 ### Backpacks
 | Type | Size |
@@ -26,7 +26,7 @@ Add single item storage block that can hold multiple stacks of one item
 | Iron Barrel | Iron | 108 Stacks = 6912 Items |
 | Gold Barrel | Gold | 216 Stacks = 13824 Items |
 | Diamond Barrel | Diamond | 432 Stacks = 27648 Items |
-| Netherrite Barrel | Netherrite | 864 Stacks = 55296 Items |
+| Netherite Barrel | Netherite | 864 Stacks = 55296 Items |
 
 ### Cats
 - Calico cat (after Yannick's cats)
