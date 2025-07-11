@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.TntBlock;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import xyz.lunala.meowstorage.Meowstorage;
 import xyz.lunala.meowstorage.init.BlockInit;
@@ -26,6 +27,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         generateChests(pWriter);
+        generateBackpacks(pWriter);
     }
 
     protected static void fullRecipe(Consumer<FinishedRecipe> recipeOutput, RecipeCategory category, ItemLike result, ItemLike input, String unlockName, String recipeName) {
@@ -102,5 +104,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
 
         smithingUpgrade(recipeOutput, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ItemInit.DIAMOND_CHEST_ITEM.get(), Items.NETHERITE_INGOT, ItemInit.NETHERITE_CHEST_ITEM.get());
+    }
+
+    protected static void generateBackpacks(Consumer<FinishedRecipe> recipeOutput) {
+        // Small Backpack
+        backpackFrom(recipeOutput, Items.CHEST.asItem(), Items.LEATHER.asItem(), ItemInit.SMALL_BACKPACK_ITEM.get(), "small_backpack");
+        // Mid Backpack
+        backpackFrom(recipeOutput, ItemInit.SMALL_BACKPACK_ITEM.get(), ItemInit.COPPER_CHEST_ITEM.get(), ItemInit.MID_BACKPACK_ITEM.get(), "mid_backpack");
+        // Big Backpack
+        backpackFrom(recipeOutput, ItemInit.SMALL_BACKPACK_ITEM.get(), ItemInit.IRON_CHEST_ITEM.get(), ItemInit.MID_BACKPACK_ITEM.get(), "mid_backpack");
+    }
+
+    protected static void backpackFrom(Consumer<FinishedRecipe> recipeOutput, ItemLike centerPiece, ItemLike upgrade, ItemLike result, String recipeName) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, result)
+                .pattern("CDC")
+                .pattern("DAD")
+                .pattern("DBD")
+                .define('B', upgrade)
+                .define('A', centerPiece)
+                .define('C', Items.STRING)
+                .define('D', Items.LEATHER)
+                .save(recipeOutput, Meowstorage.MODID + ":" + recipeName)
+        ;
     }
 }
