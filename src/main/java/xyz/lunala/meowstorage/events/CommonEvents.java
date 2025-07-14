@@ -2,7 +2,9 @@ package xyz.lunala.meowstorage.events;
 
 import com.google.common.eventbus.Subscribe;
 import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.animal.CatVariant;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import xyz.lunala.meowstorage.init.EntityInit;

@@ -1,40 +1,26 @@
 package xyz.lunala.meowstorage.renderer;
 
-import com.mojang.authlib.minecraft.client.MinecraftClient;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.data.ModelData;
-import net.minecraftforge.client.model.data.ModelProperty;
-import net.minecraftforge.client.model.renderable.BakedModelRenderable;
 import org.joml.Quaternionf;
-import org.joml.Vector4f;
 import xyz.lunala.meowstorage.init.BlockInit;
 import xyz.lunala.meowstorage.init.ItemInit;
-import xyz.lunala.meowstorage.model.SmallBackpackModel;
-import xyz.lunala.meowstorage.util.BackpackRenderTypeLookup;
 
-import static xyz.lunala.meowstorage.init.BlockEntityInit.SMALL_BACKPACK;
-
+/**
+ * Quick disclaimer: Most of the numbers are offsets taken fresh from my ass. Don't look into them too much.
+ */
 @OnlyIn(Dist.CLIENT)
 public class BackpackRenderer extends RenderLayer<AbstractClientPlayer,PlayerModel<AbstractClientPlayer>> {
     public BackpackRenderer(RenderLayerParent pRenderer) {
@@ -57,10 +43,15 @@ public class BackpackRenderer extends RenderLayer<AbstractClientPlayer,PlayerMod
     private void renderSmallPack(PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, AbstractClientPlayer pLivingEntity, ItemStack stack, float pPartialTick) {
         pPoseStack.pushPose();
 
-        pPoseStack.translate(0.0D, 0.0D, 0.125D); // Adjust position to avoid clipping
+        pPoseStack.translate(0.0D, 0.0D, 0.16D);
         pPoseStack.mulPose(new Quaternionf().rotateLocalX((float) Math.toRadians(180)));
         pPoseStack.mulPose(new Quaternionf().rotateLocalY((float) Math.toRadians(180)));
         pPoseStack.translate(-0.5, -0.6, -0.1);
+
+        if (pLivingEntity.isCrouching()) {
+            pPoseStack.mulPose(new Quaternionf().rotateLocalX((float) Math.toRadians(-29.5)));
+            pPoseStack.translate(0.0D, -0.2D, 0.2D);
+        }
 
         Minecraft.getInstance().getBlockRenderer().renderSingleBlock(BlockInit.SMALL_BACKPACK.get().defaultBlockState(), pPoseStack, pBuffer, pPackedLight, OverlayTexture.NO_OVERLAY, ModelData.builder().build(), RenderType.solid());
 
@@ -70,10 +61,15 @@ public class BackpackRenderer extends RenderLayer<AbstractClientPlayer,PlayerMod
     private void renderMidPack(PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, AbstractClientPlayer pLivingEntity, ItemStack stack, float pPartialTick) {
         pPoseStack.pushPose();
 
-        pPoseStack.translate(0.0D, 0.0D, 0.125D); // Adjust position to avoid clipping
+        pPoseStack.translate(0.0D, 0.0D, 0.16D);
         pPoseStack.mulPose(new Quaternionf().rotateLocalX((float) Math.toRadians(180)));
         pPoseStack.mulPose(new Quaternionf().rotateLocalY((float) Math.toRadians(180)));
         pPoseStack.translate(-0.5, -0.7, -0.1);
+
+        if (pLivingEntity.isCrouching()) {
+            pPoseStack.mulPose(new Quaternionf().rotateLocalX((float) Math.toRadians(-29.5)));
+            pPoseStack.translate(0.0D, -0.2D, 0.25D);
+        }
 
         Minecraft.getInstance().getBlockRenderer().renderSingleBlock(BlockInit.MID_BACKPACK.get().defaultBlockState(), pPoseStack, pBuffer, pPackedLight, OverlayTexture.NO_OVERLAY, ModelData.builder().build(), RenderType.solid());
 
@@ -83,10 +79,15 @@ public class BackpackRenderer extends RenderLayer<AbstractClientPlayer,PlayerMod
     private void renderBigPack(PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, AbstractClientPlayer pLivingEntity, ItemStack stack, float pPartialTick) {
         pPoseStack.pushPose();
 
-        pPoseStack.translate(0.0D, 0.0D, 0.125D); // Adjust position to avoid clipping
+        pPoseStack.translate(0.0D, 0.0D, 0.16D);
         pPoseStack.mulPose(new Quaternionf().rotateLocalX((float) Math.toRadians(180)));
         pPoseStack.mulPose(new Quaternionf().rotateLocalY((float) Math.toRadians(180)));
         pPoseStack.translate(-0.5, -0.8, -0.1);
+
+        if (pLivingEntity.isCrouching()) {
+            pPoseStack.mulPose(new Quaternionf().rotateLocalX((float) Math.toRadians(-29.5)));
+            pPoseStack.translate(0.0D, -0.2D, 0.3D);
+        }
 
         Minecraft.getInstance().getBlockRenderer().renderSingleBlock(BlockInit.BIG_BACKPACK.get().defaultBlockState(), pPoseStack, pBuffer, pPackedLight, OverlayTexture.NO_OVERLAY, ModelData.builder().build(), RenderType.solid());
 

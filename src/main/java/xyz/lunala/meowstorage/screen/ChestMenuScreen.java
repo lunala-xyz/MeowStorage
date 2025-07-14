@@ -20,7 +20,7 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
     private static final int SLOT_COLS = 9;
     private final int totalRows;
     private final int playerInventoryRows = 4;
-    private int scrollOffset = 0;
+    private int scrollOffset = playerInventoryRows;
 
     private boolean needsScrollbar = false;
     private int scrollBarLeft = 177;
@@ -47,7 +47,6 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
         this.inventoryLabelY = totalRows > 3 ? 127 : 73;
 
         needsScrollbar = Math.max(0, totalRows - VISIBLE_ROWS) > 0;
-        Meowstorage.getLogger().info(String.valueOf(Math.max(0, totalRows - VISIBLE_ROWS)));
         rearrange();
     }
 
