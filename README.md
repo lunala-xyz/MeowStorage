@@ -1,30 +1,36 @@
 # Meow Storage
-Your all in one storage solution does not include cats by default
+Your all-in-one storage solution
 All of this is very much WIP
 
-## Todo's 
-
-### Chests (Implmented, Shit textures)
+### Chests (Implemented, Shit textures)
 | Type | Material | Size |
 |------|----------|------|
-| Big Chest | Copper | 2x Chest = 54 Slots |
-| Huge Chest | Iron | 4x Chest = 108 Slots |
-| Enormous Chest | Gold | 8x Chest = 216 Slots |
-| Gigantic Chest | Diamond | 16x Chest = 432 Slots |
-| Colossal Chest | Netherrite | 32x Chest = 864 Slots |
+| Copper Chest | Copper | 2x Chest = 54 Slots |
+| Iron Chest | Iron | 4x Chest = 108 Slots |
+| Gold Chest | Gold | 8x Chest = 216 Slots |
+| Diamond Chest | Diamond | 16x Chest = 432 Slots |
+| Netherite Chest | Netherite | 32x Chest = 864 Slots |
+
+### Backpacks
+| Type | Size |
+|------|------|
+| Small Backpack | 27 Stacks = 1728 Items |
+| Backpack | 54 Stacks = 3456 Items |
+| Big Backpack | 108 Stacks = 6912 Items |
 
 ### Barrels (TBA)
 Add single item storage block that can hold multiple stacks of one item
 | Type | Material | Size |
 |------|----------|------|
-| Big Barrel | Copper | 54 Stacks = 3456 Items |
-| Huge Barrel | Iron | 108 Stacks = 6912 Items |
-| Enormous Barrel | Gold | 216 Stacks = 13824 Items |
-| Gigantic Barrel | Diamond | 432 Stacks = 27648 Items |
-| Colossal Barrel | Netherrite | 864 Stacks = 55296 Items |
+| Copper Barrel | Copper | 54 Stacks = 3456 Items |
+| Iron Barrel | Iron | 108 Stacks = 6912 Items |
+| Gold Barrel | Gold | 216 Stacks = 13824 Items |
+| Diamond Barrel | Diamond | 432 Stacks = 27648 Items |
+| Netherite Barrel | Netherite | 864 Stacks = 55296 Items |
 
-### Cats (TBA)
-Add silly little cat easter eggs
+### Cats
+- Calico cat (after Yannick's cats)
+- More soon™️
 
 ### Other features
 TBA

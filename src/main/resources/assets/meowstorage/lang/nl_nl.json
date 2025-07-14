@@ -9,5 +9,13 @@
   "container.meowstorage.diamond_chest": "Diamanten Kist",
   "block.meowstorage.netherite_chest": "Netherite Kist",
   "container.meowstorage.netherite_chest": "Netherite Kist",
+
+  "block.meowstorage.small_backpack": "Small Backpack",
+  "container.meowstorage.small_backpack": "Small Backpack",
+  "block.meowstorage.mid_backpack": "Backpack",
+  "container.meowstorage.mid_backpack": "Backpack",
+  "block.meowstorage.big_backpack": "Big Backpack",
+  "container.meowstorage.big_backpack": "Big Backpack",
+
   "item_group.meowstorage.creative_tab": "Miauw Storage"
 }
