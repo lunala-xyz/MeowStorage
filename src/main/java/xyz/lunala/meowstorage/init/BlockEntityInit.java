@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
+import xyz.lunala.meowstorage.block.BatteryBlock;
 import xyz.lunala.meowstorage.block.entity.*;
 
 public class BlockEntityInit {
@@ -36,4 +37,7 @@ public class BlockEntityInit {
 
     public static final RegistryObject<BlockEntityType<BigBackpackEntity>> BIG_BACKPACK = BLOCK_ENTITIES.register("big_backpack",
             () -> BlockEntityType.Builder.of(BigBackpackEntity::new, BlockInit.BIG_BACKPACK.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<BatteryBlockEntity>> BATTERY_BLOCK = BLOCK_ENTITIES.register("battery_block",
+            () -> BlockEntityType.Builder.of(BatteryBlockEntity::new, BlockInit.BATTERY_BLOCK.get()).build(null));
 }

@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
 
+import xyz.lunala.meowstorage.block.BatteryBlock;
 import xyz.lunala.meowstorage.block.backpacks.BigBackpack;
 import xyz.lunala.meowstorage.block.backpacks.MidBackpack;
 import xyz.lunala.meowstorage.block.backpacks.SmallBackpack;
@@ -59,5 +60,7 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .destroyTime(1f)));
 
-        public static final RegistryObject<BatteryBlock> BATTERY_BLOCK = BLOCKS.register("battery_block", () -> new BatteryBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)));
+    public static final RegistryObject<BatteryBlock> BATTERY_BLOCK = BLOCKS.register("battery_block", () ->
+            new BatteryBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLACK)));
 }
