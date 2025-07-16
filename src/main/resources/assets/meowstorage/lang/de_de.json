@@ -17,5 +17,8 @@
   "block.meowstorage.big_backpack": "Großer Rucksack",
   "container.meowstorage.big_backpack": "Großer Rucksack",
 
+  "block.meowstorage.container_linker": "Container Verbinder",
+  "item.meowstorage.linker_card": "Verbinder Karte",
+
   "item_group.meowstorage.creative_tab": "Miau Lager"
 }

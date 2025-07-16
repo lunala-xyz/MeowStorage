@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.lunala.meowstorage.menu.ChestMenu; // Assuming ChestMenu can be reused for all containers
 import xyz.lunala.meowstorage.util.IChestBlockMenuProvider; // Assuming this interface is generic enough
+import xyz.lunala.meowstorage.util.VirtualContainerManager;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
@@ -35,6 +36,7 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
     protected ItemStackHandler inventory;
     // LazyOptional for the ITEM_HANDLER capability, used for external interactions (e.g., hoppers).
     protected LazyOptional<ItemStackHandler> inventoryOptional;
+    protected String channel;
     // The display title for the container's GUI.
     protected Component TITLE;
 
@@ -119,18 +121,6 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
     }
 
     /**
-     * Provides capabilities for the block entity.
-     * This allows other systems (like hoppers) to interact with the container's inventory.
-     * @param cap The capability to retrieve.
-     * @return A LazyOptional containing the requested capability, if available.
-     */
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        // If the requested capability is ITEM_HANDLER, return the inventory optional.
-        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
-    }
-
-    /**
      * Provides capabilities for the block entity from a specific side.
      * This is useful for directional interactions.
      * @param cap The capability to retrieve.
@@ -140,7 +130,7 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         // If the requested capability is ITEM_HANDLER, return the inventory optional.
-        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
+        return (cap == ForgeCapabilities.ITEM_HANDLER) ? getOptional().cast() : super.getCapability(cap);
     }
 
     /**
@@ -202,7 +192,7 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
      * @return The LazyOptional containing the inventory handler.
      */
     public LazyOptional<ItemStackHandler> getOptional() {
-        return inventoryOptional;
+        return VirtualContainerManager.getOrDefault(channel, inventoryOptional);
     }
 
     // --- Container Interface Methods ---
@@ -294,5 +284,9 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
         for (int i = 0; i < inventory.getSlots(); i++) {
             inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false);
         }
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 }

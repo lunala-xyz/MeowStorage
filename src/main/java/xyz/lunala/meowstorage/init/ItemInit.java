@@ -45,4 +45,11 @@ public class ItemInit {
     public static final RegistryObject<Item> BIG_BACKPACK_ITEM = ITEMS.register("big_backpack", () -> new BackpackItem(
             BIG_BACKPACK.get(),
             new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> CONTAINER_LINKER_ITEM = ITEMS.register("container_linker", () -> new BlockItem(
+            CONTAINER_LINKER.get(),
+            new Item.Properties().stacksTo(64)));
+
+    public static final RegistryObject<Item> LINKER_CARD_ITEM = ITEMS.register("linker_card", () -> new Item(
+            new Item.Properties().stacksTo(64)));
 }
