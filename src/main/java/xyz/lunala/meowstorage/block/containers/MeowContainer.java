@@ -25,7 +25,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.lunala.meowstorage.block.entity.linker.ContainerLinkerBlockEntity;
 
 /**
  * Generic base class for all MeowStorage container blocks (chests and backpacks).
