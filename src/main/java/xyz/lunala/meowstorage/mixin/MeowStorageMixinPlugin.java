@@ -94,17 +94,4 @@ public class MeowStorageMixinPlugin implements IMixinConfigPlugin {
 
     }
 
-    /**
-     * Called immediately <b>after</b> a mixin is applied to a target class,
-     * allows any post-application transformations to be applied.
-     *
-     * @param targetClassName Transformed name of the target class
-     * @param targetClass     Target class tree
-     * @param mixinClassName  Name of the mixin class
-     * @param mixinInfo       Information about this mixin
-     */
-    @Override
-    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-        Meowstorage.getLogger().info(targetClassName + " has been mixed with " + mixinClassName);
-    }
 }
