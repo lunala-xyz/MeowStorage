@@ -2,19 +2,30 @@ package xyz.lunala.meowstorage.block.linker;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import xyz.lunala.meowstorage.block.chests.MeowChestBase;
+import xyz.lunala.meowstorage.block.containers.MeowContainerEntity;
 import xyz.lunala.meowstorage.init.BlockInit;
 
 import java.util.List;
@@ -43,6 +54,33 @@ public class ContainerLinkerBlock extends Block {
         if (!canSurvive(pState, pLevel, pPos)) {
             pLevel.destroyBlock(pPos, true);
         }
+    }
+
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (pLevel.isClientSide) {
+            return InteractionResult.SUCCESS;
+        }
+        if (!(pPlayer instanceof ServerPlayer sPlayer)) {
+            return InteractionResult.CONSUME;
+        }
+
+        ItemStack heldItem = pPlayer.getItemInHand(pHand);
+
+        if (!heldItem.is(BlockInit.LINKER_OUTPUT.get().asItem())) {
+            return InteractionResult.PASS;
+        }
+
+        CompoundTag linkedToTag = new CompoundTag();
+        linkedToTag.putInt("x", pPos.getX());
+        linkedToTag.putInt("y", pPos.getY());
+        linkedToTag.putInt("z", pPos.getZ());
+
+        heldItem.addTagElement("linked_to", linkedToTag);
+
+        pPlayer.sendSystemMessage(Component.literal("Linked to: " + pPos.getX() + ", " + pPos.getY() + ", " + pPos.getZ()));
+
+        return InteractionResult.CONSUME;
     }
 
     @Override

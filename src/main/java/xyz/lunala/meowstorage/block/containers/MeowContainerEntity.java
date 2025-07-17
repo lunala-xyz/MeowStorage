@@ -128,7 +128,7 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         // If the requested capability is ITEM_HANDLER, return the inventory optional.
-        return (cap == ForgeCapabilities.ITEM_HANDLER) ? getOptional().cast() : super.getCapability(cap);
+        return (cap == ForgeCapabilities.ITEM_HANDLER) ? getOptional().cast() : LazyOptional.empty().cast();
     }
 
     /**
