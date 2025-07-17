@@ -7,7 +7,7 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_translation{key='chat.square_brackets', args=[empty[siblings=[translation{key='block.meowstorage.iron_chest', args=[]}]]]}[style={color=white,hoverEvent=HoverEvent{action=<action show_item>, value='net.minecraft.network.chat.HoverEvent$ItemStackInfo@fec723cc'}}]": {
+    "has_translation{key='chat.square_brackets', args=[empty[siblings=[translation{key='block.meowstorage.iron_chest', args=[]}]]]}[style={color=white,hoverEvent=HoverEvent{action=<action show_item>, value='net.minecraft.network.chat.HoverEvent$ItemStackInfo@8490a652'}}]": {
       "conditions": {
         "items": [
           {
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_translation{key='chat.square_brackets', args=[empty[siblings=[translation{key='block.meowstorage.iron_chest', args=[]}]]]}[style={color=white,hoverEvent=HoverEvent{action=<action show_item>, value='net.minecraft.network.chat.HoverEvent$ItemStackInfo@fec723cc'}}]",
+      "has_translation{key='chat.square_brackets', args=[empty[siblings=[translation{key='block.meowstorage.iron_chest', args=[]}]]]}[style={color=white,hoverEvent=HoverEvent{action=<action show_item>, value='net.minecraft.network.chat.HoverEvent$ItemStackInfo@8490a652'}}]",
       "has_the_recipe"
     ]
   ],
