@@ -2,6 +2,9 @@ package xyz.lunala.meowstorage.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -10,7 +13,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
-import xyz.lunala.meowstorage.block.containers.MeowContainerEntity;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import xyz.lunala.meowstorage.Meowstorage;
 
 public abstract class MeowBarrelEntityBase extends BlockEntity implements Container {
     // The ItemStackHandler manages the inventory slots of the container.
@@ -30,6 +35,8 @@ public abstract class MeowBarrelEntityBase extends BlockEntity implements Contai
                 // Mark the block entity as changed whenever its contents are modified.
                 super.onContentsChanged(slot);
                 MeowBarrelEntityBase.this.setChanged();
+                if(level.isClientSide()) return;
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         };
 
@@ -60,6 +67,11 @@ public abstract class MeowBarrelEntityBase extends BlockEntity implements Contai
     @Override
     public ItemStack getItem(int pSlot) {
         return inventory.getStackInSlot(pSlot);
+    }
+
+    public ItemStack getRenderStack() {
+        ItemStack stack = inventory.getStackInSlot(0);
+        return stack.isEmpty() ? ItemStack.EMPTY : stack.copyWithCount(1);
     }
 
     /**
@@ -114,6 +126,11 @@ public abstract class MeowBarrelEntityBase extends BlockEntity implements Contai
         if (itemStack.isEmpty()) return ItemStack.EMPTY;
         ItemStack result = itemStack.copyWithCount(i);
         itemStack.shrink(i);
+        if (itemStack.getCount() <= 0) {
+            inventory.setStackInSlot(0, ItemStack.EMPTY);
+        } else {
+            inventory.setStackInSlot(0, itemStack);
+        }
         return result;
     }
 
@@ -176,5 +193,15 @@ public abstract class MeowBarrelEntityBase extends BlockEntity implements Contai
         super.saveToItem(pStack);
         CompoundTag tag = pStack.getOrCreateTag();
         saveAdditional(tag);
+    }
+
+    @Override
+    public @NotNull CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Override
+    public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 }

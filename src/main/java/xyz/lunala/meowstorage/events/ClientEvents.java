@@ -12,9 +12,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import xyz.lunala.meowstorage.Meowstorage;
+import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.init.EntityInit;
 import xyz.lunala.meowstorage.init.MenuInit;
 import xyz.lunala.meowstorage.renderer.BackpackRenderer;
+import xyz.lunala.meowstorage.renderer.BarrelBlockEntityRenderer;
 import xyz.lunala.meowstorage.renderer.CalicoCatRender;
 import xyz.lunala.meowstorage.screen.ChestMenuScreen;
 
@@ -47,5 +49,10 @@ public class ClientEvents {
                 renderer.addLayer(new BackpackRenderer(renderer));
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void registerBlockEntityRenderer(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(BlockEntityInit.COPPER_BARREL.get(), BarrelBlockEntityRenderer::new);
     }
 }
