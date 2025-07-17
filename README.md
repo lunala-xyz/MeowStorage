@@ -18,7 +18,7 @@ All of this is very much WIP
 | Backpack | 54 Stacks = 3456 Items |
 | Big Backpack | 108 Stacks = 6912 Items |
 
-### Barrels (TBA)
+### Barrels (WIP)
 Add single item storage block that can hold multiple stacks of one item
 | Type | Material | Size |
 |------|----------|------|
