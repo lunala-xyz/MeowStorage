@@ -3,6 +3,7 @@ package xyz.lunala.meowstorage.block.barrels;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -24,6 +25,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import xyz.lunala.meowstorage.block.entity.MeowBarrelEntityBase;
 
 import static xyz.lunala.meowstorage.util.InteractionHelper.playerClickedFacingFace;
 
@@ -87,12 +89,34 @@ public abstract class MeowBarrelBase extends Block implements EntityBlock {
     }
 
     public InteractionResult takeItem(BlockState pState, LevelAccessor pLevel, BlockPos pPos, Player pPlayer) {
-        pPlayer.sendSystemMessage(Component.literal("takeItem"));
+        BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+        pPlayer.sendSystemMessage(Component.literal(pPos.toShortString()));
+        pPlayer.sendSystemMessage(Component.literal(blockEntity.getClass().getCanonicalName()));
+        if (!(blockEntity instanceof MeowBarrelEntityBase meowBarrelEntityBase)) return InteractionResult.PASS;
+        pPlayer.sendSystemMessage(Component.literal("is barrel"));
+
+        boolean isShiftDown = pPlayer.isShiftKeyDown();
+
+        ItemStack itemStack = meowBarrelEntityBase.takeItem(isShiftDown ? 64 : 1);
+        pPlayer.sendSystemMessage(Component.literal(itemStack.toString()));
+
+        if(!pPlayer.getInventory().add(itemStack)) {
+            Containers.dropItemStack(pPlayer.level(), pPos.getX(), pPos.getY(), pPos.getZ(), itemStack);
+        }
+
         return InteractionResult.CONSUME;
     }
 
     public InteractionResult putItem(BlockState pState, LevelAccessor pLevel, BlockPos pPos, Player pPlayer, ItemStack pStack) {
-        pPlayer.sendSystemMessage(Component.literal("putItem"));
+        BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+        if (!(blockEntity instanceof MeowBarrelEntityBase meowBarrelEntityBase)) return InteractionResult.PASS;
+
+        boolean isShiftDown = pPlayer.isShiftKeyDown();
+
+        int shrink = meowBarrelEntityBase.putItem(pStack, isShiftDown ? 64 : 1);
+
+        pStack.shrink(shrink);
+
         return InteractionResult.CONSUME;
     }
 }
