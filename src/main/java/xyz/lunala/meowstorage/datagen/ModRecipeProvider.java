@@ -27,6 +27,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         generateChests(pWriter);
+        generateBarrels(pWriter);
         generateBackpacks(pWriter);
     }
 
@@ -104,6 +105,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
 
         smithingUpgrade(recipeOutput, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ItemInit.DIAMOND_CHEST_ITEM.get(), Items.NETHERITE_INGOT, ItemInit.NETHERITE_CHEST_ITEM.get());
+    }
+
+    protected static void generateBarrels(Consumer<FinishedRecipe> recipeOutput) {
+        Tuple<ItemLike, ItemLike>[] items = new Tuple[] {
+                new Tuple(ItemInit.COPPER_BARREL_ITEM.get(), Items.COPPER_INGOT),
+                new Tuple(ItemInit.IRON_BARREL_ITEM.get(), Items.IRON_INGOT),
+                new Tuple(ItemInit.GOLD_BARREL_ITEM.get(), Items.GOLD_INGOT),
+                new Tuple(ItemInit.DIAMOND_BARREL_ITEM.get(), Items.DIAMOND),
+        };
+        ItemLike base = Items.CHEST;
+
+        for (Tuple<ItemLike, ItemLike> pair : items) {
+            chestFromMaterial(recipeOutput, pair.getA(), pair.getB(), base, "has_" + pair.getA());
+            base = pair.getA();
+        }
+
+        smithingUpgrade(recipeOutput, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ItemInit.DIAMOND_BARREL_ITEM.get(), Items.NETHERITE_INGOT, ItemInit.NETHERITE_BARREL_ITEM.get());
     }
 
     protected static void generateBackpacks(Consumer<FinishedRecipe> recipeOutput) {
