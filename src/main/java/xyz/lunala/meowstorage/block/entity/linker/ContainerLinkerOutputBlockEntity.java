@@ -12,7 +12,10 @@ import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import xyz.lunala.meowstorage.block.containers.MeowContainerEntity;
+import xyz.lunala.meowstorage.block.linker.ContainerLinkerOutputBlock;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
+
+import static xyz.lunala.meowstorage.block.linker.ContainerLinkerOutputBlock.LINKSTATUS;
 
 public class ContainerLinkerOutputBlockEntity extends BlockEntity {
     private BlockPos likedTo = new BlockPos(0, 0, 0);
@@ -77,14 +80,20 @@ public class ContainerLinkerOutputBlockEntity extends BlockEntity {
 
         if(!(blockEntity instanceof ContainerLinkerOutputBlockEntity linkerOutputBlockEntity)) {
             optional = LazyOptional.empty();
+            state.setValue(LINKSTATUS, ContainerLinkerOutputBlock.LinkStatus.UNLINKED);
+            setChanged();
             return;
         }
 
         if(!(entityBelow instanceof MeowContainerEntity meowContainerEntity)) {
             optional = LazyOptional.empty();
+            state.setValue(LINKSTATUS, ContainerLinkerOutputBlock.LinkStatus.UNLINKED);
+            setChanged();
             return;
         }
 
         optional = meowContainerEntity.getOptional();
+        state.setValue(LINKSTATUS, ContainerLinkerOutputBlock.LinkStatus.LINKED);
+        setChanged();
     }
 }
