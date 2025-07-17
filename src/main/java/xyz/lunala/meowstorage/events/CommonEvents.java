@@ -44,7 +44,7 @@ public class CommonEvents {
         if (!pPlayer.isCreative()) return;
 
         if (playerClickedFacingFace(pPos, pLevel, pState, pPlayer)) return;
-        
+
         event.setCanceled(true);
         if (!pLevel.isClientSide()) barrelBase.takeItem(pState, pLevel, pPos, pPlayer);
     }

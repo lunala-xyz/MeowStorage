@@ -8,7 +8,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
-import xyz.lunala.meowstorage.block.entity.*;
+import xyz.lunala.meowstorage.block.entity.backpacks.BigBackpackEntity;
+import xyz.lunala.meowstorage.block.entity.backpacks.MidBackpackEntity;
+import xyz.lunala.meowstorage.block.entity.backpacks.SmallBackpackEntity;
+import xyz.lunala.meowstorage.block.entity.barrels.CopperBarrelBlockEntity;
+import xyz.lunala.meowstorage.block.entity.chests.*;
 
 public class BlockEntityInit {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
