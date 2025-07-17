@@ -1,6 +1,7 @@
 package xyz.lunala.meowstorage.block.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -140,5 +141,28 @@ public abstract class MeowBarrelEntityBase extends BlockEntity implements Contai
 
         //inventory.setStackInSlot(0, currentStack);
         return true;
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag pTag) {
+        super.saveAdditional(pTag);
+        pTag.put("inventory", inventory.serializeNBT());
+    }
+
+    @Override
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
+        if (pTag.contains("inventory")) {
+            inventory.deserializeNBT(pTag.getCompound("inventory"));
+        } else {
+            inventory.setStackInSlot(0, ItemStack.EMPTY);
+        }
+    }
+
+    @Override
+    public void saveToItem(ItemStack pStack) {
+        super.saveToItem(pStack);
+        CompoundTag tag = pStack.getOrCreateTag();
+        tag.put("inventory", inventory.serializeNBT());
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -118,5 +119,16 @@ public abstract class MeowBarrelBase extends Block implements EntityBlock {
         pStack.shrink(shrink);
 
         return InteractionResult.CONSUME;
+    }
+
+    @Override
+    public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
+        if (pLevel.isClientSide) return;
+        if (pStack.isEmpty()) return;
+
+        BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+        if (blockEntity instanceof MeowBarrelEntityBase meowBarrelEntityBase) {
+            meowBarrelEntityBase.load(pStack.getOrCreateTag());
+        }
     }
 }
