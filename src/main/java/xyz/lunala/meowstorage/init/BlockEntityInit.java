@@ -11,10 +11,7 @@ import static xyz.lunala.meowstorage.Meowstorage.MODID;
 import xyz.lunala.meowstorage.block.entity.backpacks.BigBackpackEntity;
 import xyz.lunala.meowstorage.block.entity.backpacks.MidBackpackEntity;
 import xyz.lunala.meowstorage.block.entity.backpacks.SmallBackpackEntity;
-import xyz.lunala.meowstorage.block.entity.barrels.CopperBarrelBlockEntity;
-import xyz.lunala.meowstorage.block.entity.barrels.DiamondBarrelBlockEntity;
-import xyz.lunala.meowstorage.block.entity.barrels.GoldBarrelBlockEntity;
-import xyz.lunala.meowstorage.block.entity.barrels.IronBarrelBlockEntity;
+import xyz.lunala.meowstorage.block.entity.barrels.*;
 import xyz.lunala.meowstorage.block.entity.chests.*;
 
 public class BlockEntityInit {
@@ -56,6 +53,6 @@ public class BlockEntityInit {
     public static final RegistryObject<BlockEntityType<DiamondBarrelBlockEntity>> DIAMOND_BARREL = BLOCK_ENTITIES.register("diamond_barrel",
             () -> BlockEntityType.Builder.of(DiamondBarrelBlockEntity::new, BlockInit.DIAMOND_BARREL.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<NetheriteChestBlockEntity>> NETHERITE_BARREL = BLOCK_ENTITIES.register("netherite_barrel",
-            () -> BlockEntityType.Builder.of(NetheriteChestBlockEntity::new, BlockInit.NETHERITE_BARREL.get()).build(null));
+    public static final RegistryObject<BlockEntityType<NetheriteBarrelBlockEntity>> NETHERITE_BARREL = BLOCK_ENTITIES.register("netherite_barrel",
+            () -> BlockEntityType.Builder.of(NetheriteBarrelBlockEntity::new, BlockInit.NETHERITE_BARREL.get()).build(null));
 }

@@ -35,6 +35,7 @@ public abstract class MeowBarrelEntityBase extends BlockEntity implements Contai
                 // Mark the block entity as changed whenever its contents are modified.
                 super.onContentsChanged(slot);
                 MeowBarrelEntityBase.this.setChanged();
+                assert level != null;
                 if(level.isClientSide()) return;
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }

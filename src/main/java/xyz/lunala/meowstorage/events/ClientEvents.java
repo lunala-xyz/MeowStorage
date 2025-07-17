@@ -54,5 +54,9 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerBlockEntityRenderer(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(BlockEntityInit.COPPER_BARREL.get(), BarrelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(BlockEntityInit.IRON_BARREL.get(), BarrelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(BlockEntityInit.GOLD_BARREL.get(), BarrelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(BlockEntityInit.DIAMOND_BARREL.get(), BarrelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(BlockEntityInit.NETHERITE_BARREL.get(), BarrelBlockEntityRenderer::new);
     }
 }
