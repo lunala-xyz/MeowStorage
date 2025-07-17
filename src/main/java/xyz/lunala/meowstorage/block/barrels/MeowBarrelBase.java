@@ -91,15 +91,11 @@ public abstract class MeowBarrelBase extends Block implements EntityBlock {
 
     public InteractionResult takeItem(BlockState pState, LevelAccessor pLevel, BlockPos pPos, Player pPlayer) {
         BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-        pPlayer.sendSystemMessage(Component.literal(pPos.toShortString()));
-        pPlayer.sendSystemMessage(Component.literal(blockEntity.getClass().getCanonicalName()));
         if (!(blockEntity instanceof MeowBarrelEntityBase meowBarrelEntityBase)) return InteractionResult.PASS;
-        pPlayer.sendSystemMessage(Component.literal("is barrel"));
 
         boolean isShiftDown = pPlayer.isShiftKeyDown();
 
         ItemStack itemStack = meowBarrelEntityBase.takeItem(isShiftDown ? 64 : 1);
-        pPlayer.sendSystemMessage(Component.literal(itemStack.toString()));
 
         if(!pPlayer.getInventory().add(itemStack)) {
             Containers.dropItemStack(pPlayer.level(), pPos.getX(), pPos.getY(), pPos.getZ(), itemStack);
