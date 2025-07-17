@@ -34,6 +34,8 @@ public class CommonEvents {
         Block pBlock = pState.getBlock();
         Player pPlayer = event.getEntity();
 
+        if (pLevel.isClientSide()) return;
+
         if(event.getHand() != InteractionHand.MAIN_HAND) return;
 
         if(!event.getAction().equals(PlayerInteractEvent.LeftClickBlock.Action.START)) return;
@@ -45,20 +47,7 @@ public class CommonEvents {
 
         if (playerClickedFacingFace(pPos, pLevel, pState, pPlayer)) return;
 
-        pPlayer.sendSystemMessage(Component.literal(stringifyEvent(event)));
-
         event.setCanceled(true);
         barrelBase.takeItem(pState, pLevel, pPos, pPlayer);
-    }
-
-    private static String stringifyEvent(PlayerInteractEvent.LeftClickBlock event) {
-        return "PlayerInteractEvent.LeftClickBlock: {\n" +
-                "  Action: " + event.getAction() + ",\n" +
-                "  Hand: " + event.getHand() + ",\n" +
-                "  BlockPos: " + event.getPos() + ",\n" +
-                "  Level: " + event.getLevel().dimension().location() + ",\n" +
-                "  IsClient: " + event.getLevel().isClientSide() + ",\n" +
-                "  Entity: " + event.getEntity().getName().getString() + ",\n" +
-                "}";
     }
 }
