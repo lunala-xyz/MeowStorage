@@ -17,5 +17,13 @@
   "block.meowstorage.big_backpack": "Großer Rucksack",
   "container.meowstorage.big_backpack": "Großer Rucksack",
 
+  "block.meowstorage.copper_barrel": "Kupfer Fass",
+  "block.meowstorage.iron_barrel": "Eisen Fass",
+  "block.meowstorage.gold_barrel": "Gold Fass",
+  "block.meowstorage.diamond_barrel": "Diamant Fass",
+  "block.meowstorage.netherite_barrel": "Netherite Fass",
+
+  "entity.meowstorage.calico_cat": "Kalikokatze",
+
   "item_group.meowstorage.creative_tab": "Miau Lager"
 }

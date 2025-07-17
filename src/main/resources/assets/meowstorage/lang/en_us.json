@@ -17,5 +17,13 @@
   "block.meowstorage.big_backpack": "Big Backpack",
   "container.meowstorage.big_backpack": "Big Backpack",
 
+  "block.meowstorage.copper_barrel": "Copper Barrel",
+  "block.meowstorage.iron_barrel": "Iron Barrel",
+  "block.meowstorage.gold_barrel": "Gold Barrel",
+  "block.meowstorage.diamond_barrel": "Diamond Barrel",
+  "block.meowstorage.netherite_barrel": "Netherite Barrel",
+
+  "entity.meowstorage.calico_cat": "Calico Cat",
+
   "item_group.meowstorage.creative_tab": "Meow Storage"
 }
