@@ -11,7 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import xyz.lunala.meowstorage.block.backpacks.BigBackpack;
 import xyz.lunala.meowstorage.block.backpacks.MidBackpack;
 import xyz.lunala.meowstorage.block.backpacks.SmallBackpack;
-import xyz.lunala.meowstorage.block.barrels.CopperBarrelBlock;
+import xyz.lunala.meowstorage.block.barrels.*;
 import xyz.lunala.meowstorage.block.chests.*;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
@@ -61,6 +61,26 @@ public class BlockInit {
 
     public static final RegistryObject<CopperBarrelBlock> COPPER_BARREL = BLOCKS.register("copper_barrel", () ->
             new CopperBarrelBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .destroyTime(1f)));
+
+    public static final RegistryObject<IronBarrelBlock> IRON_BARREL = BLOCKS.register("iron_barrel", () ->
+            new IronBarrelBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .destroyTime(1f)));
+
+    public static final RegistryObject<GoldBarrelBlock> GOLD_BARREL = BLOCKS.register("gold_barrel", () ->
+            new GoldBarrelBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .destroyTime(1f)));
+
+    public static final RegistryObject<DiamondBarrelBlock> DIAMOND_BARREL = BLOCKS.register("diamond_barrel", () ->
+            new DiamondBarrelBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .destroyTime(1f)));
+
+    public static final RegistryObject<NetheriteBarrelBlock> NETHERITE_BARREL = BLOCKS.register("netherite_barrel", () ->
+            new NetheriteBarrelBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .destroyTime(1f)));
 }

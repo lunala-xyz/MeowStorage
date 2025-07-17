@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north": { "model": "meowstorage:block/diamond_barrel" },
+    "facing=east": { "model": "meowstorage:block/diamond_barrel", "y": 90 },
+    "facing=south": { "model": "meowstorage:block/diamond_barrel", "y": 180 },
+    "facing=west": { "model": "meowstorage:block/diamond_barrel", "y": 270 },
+    "facing=up": { "model": "meowstorage:block/diamond_barrel", "x": -90 },
+    "facing=down": { "model": "meowstorage:block/diamond_barrel", "x": 90 }
+  }
+}

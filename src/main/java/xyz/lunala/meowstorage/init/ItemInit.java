@@ -49,4 +49,20 @@ public class ItemInit {
     public static final RegistryObject<Item> COPPER_BARREL_ITEM = ITEMS.register("copper_barrel", () -> new BlockItem(
             COPPER_BARREL.get(),
             new Item.Properties()));
+
+    public static final RegistryObject<Item> IRON_BARREL_ITEM = ITEMS.register("iron_barrel", () -> new BlockItem(
+            IRON_BARREL.get(),
+            new Item.Properties()));
+
+    public static final RegistryObject<Item> GOLD_BARREL_ITEM = ITEMS.register("gold_barrel", () -> new BlockItem(
+            GOLD_BARREL.get(),
+            new Item.Properties()));
+
+    public static final RegistryObject<Item> DIAMOND_BARREL_ITEM = ITEMS.register("diamond_barrel", () -> new BlockItem(
+            DIAMOND_BARREL.get(),
+            new Item.Properties()));
+
+    public static final RegistryObject<Item> NETHERITE_BARREL_ITEM = ITEMS.register("netherite_barrel", () -> new BlockItem(
+            NETHERITE_BARREL.get(),
+            new Item.Properties()));
 }

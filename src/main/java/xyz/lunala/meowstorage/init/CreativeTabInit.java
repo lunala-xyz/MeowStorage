@@ -26,5 +26,9 @@ public class CreativeTabInit {
         output.accept(BIG_BACKPACK_ITEM.get());
 
         output.accept(COPPER_BARREL_ITEM.get());
+        output.accept(IRON_BARREL_ITEM.get());
+        output.accept(GOLD_BARREL_ITEM.get());
+        output.accept(DIAMOND_BARREL_ITEM.get());
+        output.accept(NETHERITE_BARREL_ITEM.get());
     }).build());
 }
