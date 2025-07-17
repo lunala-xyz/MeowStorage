@@ -146,14 +146,26 @@ public abstract class MeowBarrelEntityBase extends BlockEntity implements Contai
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
-        pTag.put("inventory", inventory.serializeNBT());
+        CompoundTag inventoryTag = new CompoundTag();
+        ItemStack itemStack = inventory.getStackInSlot(0);
+        inventoryTag.put("item", itemStack.copyWithCount(1).serializeNBT());
+        inventoryTag.putInt("count", itemStack.getCount());
+        pTag.put("barrel_inv", inventoryTag);
     }
 
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        if (pTag.contains("inventory")) {
-            inventory.deserializeNBT(pTag.getCompound("inventory"));
+        if (pTag.contains("barrel_inv")) {
+            CompoundTag inventoryTag = pTag.getCompound("barrel_inv");
+            if (inventoryTag.contains("item")) {
+                ItemStack itemStack = ItemStack.of(inventoryTag.getCompound("item"));
+                int count = inventoryTag.getInt("count");
+                inventory.setStackInSlot(0, itemStack);
+                itemStack.setCount(count);
+            } else {
+                inventory.setStackInSlot(0, ItemStack.EMPTY);
+            }
         } else {
             inventory.setStackInSlot(0, ItemStack.EMPTY);
         }
@@ -163,6 +175,6 @@ public abstract class MeowBarrelEntityBase extends BlockEntity implements Contai
     public void saveToItem(ItemStack pStack) {
         super.saveToItem(pStack);
         CompoundTag tag = pStack.getOrCreateTag();
-        tag.put("inventory", inventory.serializeNBT());
+        saveAdditional(tag);
     }
 }
