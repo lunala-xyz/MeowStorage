@@ -24,5 +24,7 @@ public class CreativeTabInit {
         output.accept(SMALL_BACKPACK_ITEM.get());
         output.accept(MID_BACKPACK_ITEM.get());
         output.accept(BIG_BACKPACK_ITEM.get());
+
+        output.accept(COPPER_BARREL_ITEM.get());
     }).build());
 }

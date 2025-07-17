@@ -45,4 +45,8 @@ public class ItemInit {
     public static final RegistryObject<Item> BIG_BACKPACK_ITEM = ITEMS.register("big_backpack", () -> new BackpackItem(
             BIG_BACKPACK.get(),
             new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> COPPER_BARREL_ITEM = ITEMS.register("copper_barrel", () -> new BlockItem(
+            COPPER_BARREL.get(),
+            new Item.Properties()));
 }

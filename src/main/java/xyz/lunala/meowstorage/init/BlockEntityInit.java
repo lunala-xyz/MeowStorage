@@ -36,4 +36,7 @@ public class BlockEntityInit {
 
     public static final RegistryObject<BlockEntityType<BigBackpackEntity>> BIG_BACKPACK = BLOCK_ENTITIES.register("big_backpack",
             () -> BlockEntityType.Builder.of(BigBackpackEntity::new, BlockInit.BIG_BACKPACK.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<CopperBarrelBlockEntity>> COPPER_BARREL = BLOCK_ENTITIES.register("copper_barrel",
+            () -> BlockEntityType.Builder.of(CopperBarrelBlockEntity::new, BlockInit.COPPER_BARREL.get()).build(null));
 }

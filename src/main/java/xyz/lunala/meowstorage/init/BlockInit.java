@@ -11,6 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import xyz.lunala.meowstorage.block.backpacks.BigBackpack;
 import xyz.lunala.meowstorage.block.backpacks.MidBackpack;
 import xyz.lunala.meowstorage.block.backpacks.SmallBackpack;
+import xyz.lunala.meowstorage.block.barrels.CopperBarrelBlock;
 import xyz.lunala.meowstorage.block.chests.*;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
@@ -55,6 +56,11 @@ public class BlockInit {
 
     public static final RegistryObject<BigBackpack> BIG_BACKPACK = BLOCKS.register("big_backpack", () ->
             new BigBackpack(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .destroyTime(1f)));
+
+    public static final RegistryObject<CopperBarrelBlock> COPPER_BARREL = BLOCKS.register("copper_barrel", () ->
+            new CopperBarrelBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .destroyTime(1f)));
 }
