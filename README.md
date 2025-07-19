@@ -2,7 +2,7 @@
 Your all-in-one storage solution
 All of this is very much WIP
 
-### Chests (Implemented, Shit textures)
+### Chests
 | Type | Material | Size |
 |------|----------|------|
 | Copper Chest | Copper | 2x Chest = 54 Slots |
@@ -23,7 +23,7 @@ Link containers using a Container Linker and a Container Linker Output by simply
 The output is now linked to the Linker and can be interacted with via hoppers.
 
 
-### Barrels (TBA)
+### Barrels
 Add single item storage block that can hold multiple stacks of one item
 | Type | Material | Size |
 |------|----------|------|
