@@ -13,13 +13,14 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import xyz.lunala.meowstorage.block.entity.backpacks.SmallBackpackEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.init.ItemInit;
 
 import java.util.List;
 
-public class SmallBackpack extends MeowBackpackBase {
+public class SmallBackpack extends MeowBackpackBase implements ICurioItem {
 
     /**
      * Constructor for the base backpack block.

@@ -3,6 +3,7 @@ package xyz.lunala.meowstorage;
 import com.mojang.logging.LogUtils;
 
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -10,12 +11,15 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import org.slf4j.Logger;
 
 import org.spongepowered.asm.mixin.Mixins;
 
+import top.theillusivec4.curios.api.CuriosApi;
+import xyz.lunala.meowstorage.block.backpacks.SmallBackpack;
 import xyz.lunala.meowstorage.init.*;
 import xyz.lunala.meowstorage.renderer.CalicoCatRender;
 import xyz.lunala.meowstorage.screen.ChestMenuScreen;
@@ -38,8 +42,6 @@ public class Meowstorage {
 
 
         MinecraftForge.EVENT_BUS.register(this);
-
-
     }
     public static Logger getLogger() {
         return LOGGER;

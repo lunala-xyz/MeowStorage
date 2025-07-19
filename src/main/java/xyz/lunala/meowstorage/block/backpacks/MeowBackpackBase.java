@@ -11,6 +11,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,6 +19,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import xyz.lunala.meowstorage.block.containers.MeowContainer;
 import xyz.lunala.meowstorage.block.entity.MeowBackpackEntityBase;
 
@@ -26,7 +29,7 @@ import xyz.lunala.meowstorage.block.entity.MeowBackpackEntityBase;
  * This class extends MeowContainerBaseBlock, providing common properties and behaviors
  * specific to backpacks.
  */
-public abstract class MeowBackpackBase extends MeowContainer {
+public abstract class MeowBackpackBase extends MeowContainer implements ICurioItem {
 
     /**
      * Constructor for the base backpack block.
@@ -97,5 +100,10 @@ public abstract class MeowBackpackBase extends MeowContainer {
                 }
             }
         }
+    }
+
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        // ticking logic here
     }
 }

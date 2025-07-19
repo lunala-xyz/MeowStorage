@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
 
+import top.theillusivec4.curios.api.CuriosApi;
 import xyz.lunala.meowstorage.block.backpacks.BigBackpack;
 import xyz.lunala.meowstorage.block.backpacks.MidBackpack;
 import xyz.lunala.meowstorage.block.backpacks.SmallBackpack;

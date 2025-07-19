@@ -135,6 +135,12 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+
+    maven {
+        name = "Illusive Soulworks maven"
+        url = "https://maven.theillusivec4.top/"
+    }
+
     exclusiveContent {
         forRepository {
             maven {
@@ -166,6 +172,13 @@ dependencies {
     runtimeOnly fg.deobf("maven.modrinth:toms-storage:1.20-1.7.1")
     runtimeOnly fg.deobf("maven.modrinth:ae2:15.4.5")
     runtimeOnly fg.deobf("maven.modrinth:powah:5.0.10-forge")
+
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:5.14.1+1.20.1:api") {
+        transitive = false
+    }
+    runtimeOnly fg.deobf("maven.modrinth:curios:5.14.1+1.20.1") {
+        transitive = false
+    }
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
