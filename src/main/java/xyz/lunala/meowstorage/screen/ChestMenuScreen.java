@@ -40,8 +40,6 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
         super(menu, inventory, title);
         this.totalRows = (int)Math.ceil(getInventorySlots() / (float)SLOT_COLS) - playerInventoryRows;
 
-        Meowstorage.getLogger().info("Total rows: {}", totalRows);
-
         this.imageWidth = 176;
         this.imageHeight = totalRows > 3 ? 220 : 166;
         this.inventoryLabelY = totalRows > 3 ? 127 : 73;

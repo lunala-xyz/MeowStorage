@@ -4,10 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -87,6 +84,8 @@ public abstract class MeowContainer extends Block implements EntityBlock {
         if (!(blockEntity instanceof MeowContainerEntity container)) {
             return InteractionResult.PASS;
         }
+
+
 
         // Only proceed on the server side to open the GUI.
         if (level.isClientSide) {

@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 import xyz.lunala.meowstorage.block.entity.*;
+import xyz.lunala.meowstorage.block.entity.linker.ContainerLinkerOutputBlockEntity;
 
 public class BlockEntityInit {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
@@ -36,4 +37,8 @@ public class BlockEntityInit {
 
     public static final RegistryObject<BlockEntityType<BigBackpackEntity>> BIG_BACKPACK = BLOCK_ENTITIES.register("big_backpack",
             () -> BlockEntityType.Builder.of(BigBackpackEntity::new, BlockInit.BIG_BACKPACK.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ContainerLinkerOutputBlockEntity>> LINKER_OUTPUT = BLOCK_ENTITIES.register("container_link_output",
+            () -> BlockEntityType.Builder.of(ContainerLinkerOutputBlockEntity::new, BlockInit.LINKER_OUTPUT.get()).build(null));
+
 }

@@ -18,7 +18,12 @@ All of this is very much WIP
 | Backpack | 54 Stacks = 3456 Items |
 | Big Backpack | 108 Stacks = 6912 Items |
 
-### Barrels (WIP)
+### Container linkers
+Link containers using a Container Linker and a Container Linker Output by simply right clicking the output on the placed linker and then placing it wherever.
+The output is now linked to the Linker and can be interacted with via hoppers.
+
+
+### Barrels (TBA)
 Add single item storage block that can hold multiple stacks of one item
 | Type | Material | Size |
 |------|----------|------|

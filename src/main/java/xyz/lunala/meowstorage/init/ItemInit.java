@@ -1,6 +1,5 @@
 package xyz.lunala.meowstorage.init;
 
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.registries.RegistryObject;
@@ -45,4 +44,12 @@ public class ItemInit {
     public static final RegistryObject<Item> BIG_BACKPACK_ITEM = ITEMS.register("big_backpack", () -> new BackpackItem(
             BIG_BACKPACK.get(),
             new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> CONTAINER_LINKER_ITEM = ITEMS.register("container_linker", () -> new BlockItem(
+            CONTAINER_LINKER.get(),
+            new Item.Properties().stacksTo(64)));
+
+    public static final RegistryObject<Item> LINKER_OUTPUT_ITEM = ITEMS.register("container_link_output", () -> new BlockItem(
+            LINKER_OUTPUT.get(),
+            new Item.Properties().stacksTo(64)));
 }

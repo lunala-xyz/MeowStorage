@@ -119,18 +119,6 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
     }
 
     /**
-     * Provides capabilities for the block entity.
-     * This allows other systems (like hoppers) to interact with the container's inventory.
-     * @param cap The capability to retrieve.
-     * @return A LazyOptional containing the requested capability, if available.
-     */
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        // If the requested capability is ITEM_HANDLER, return the inventory optional.
-        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
-    }
-
-    /**
      * Provides capabilities for the block entity from a specific side.
      * This is useful for directional interactions.
      * @param cap The capability to retrieve.
@@ -140,7 +128,7 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         // If the requested capability is ITEM_HANDLER, return the inventory optional.
-        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : super.getCapability(cap);
+        return (cap == ForgeCapabilities.ITEM_HANDLER) ? getOptional().cast() : LazyOptional.empty().cast();
     }
 
     /**

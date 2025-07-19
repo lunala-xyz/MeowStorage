@@ -12,6 +12,8 @@ import xyz.lunala.meowstorage.block.backpacks.BigBackpack;
 import xyz.lunala.meowstorage.block.backpacks.MidBackpack;
 import xyz.lunala.meowstorage.block.backpacks.SmallBackpack;
 import xyz.lunala.meowstorage.block.chests.*;
+import xyz.lunala.meowstorage.block.linker.ContainerLinkerBlock;
+import xyz.lunala.meowstorage.block.linker.ContainerLinkerOutputBlock;
 
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
@@ -55,6 +57,16 @@ public class BlockInit {
 
     public static final RegistryObject<BigBackpack> BIG_BACKPACK = BLOCKS.register("big_backpack", () ->
             new BigBackpack(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .destroyTime(1f)));
+
+    public static final RegistryObject<ContainerLinkerBlock> CONTAINER_LINKER = BLOCKS.register("container_linker", () ->
+            new ContainerLinkerBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .destroyTime(1f)));
+
+    public static final RegistryObject<ContainerLinkerOutputBlock> LINKER_OUTPUT = BLOCKS.register("container_link_output", () ->
+            new ContainerLinkerOutputBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .destroyTime(1f)));
 }

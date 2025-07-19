@@ -17,5 +17,8 @@
   "block.meowstorage.big_backpack": "Big Backpack",
   "container.meowstorage.big_backpack": "Big Backpack",
 
+  "block.meowstorage.container_linker": "Container Linker",
+  "block.meowstorage.container_link_output": "Container Linker Output",
+
   "item_group.meowstorage.creative_tab": "Miauw Storage"
 }

@@ -24,5 +24,8 @@ public class CreativeTabInit {
         output.accept(SMALL_BACKPACK_ITEM.get());
         output.accept(MID_BACKPACK_ITEM.get());
         output.accept(BIG_BACKPACK_ITEM.get());
+
+        output.accept(CONTAINER_LINKER_ITEM.get());
+        output.accept(LINKER_OUTPUT_ITEM.get());
     }).build());
 }
