@@ -12,20 +12,32 @@ import static xyz.lunala.meowstorage.init.ItemInit.*;
 import static xyz.lunala.meowstorage.Meowstorage.MODID;
 
 public class CreativeTabInit {
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+        public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister
+                        .create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    public static final RegistryObject<CreativeModeTab> TAB = CREATIVE_MODE_TABS.register("meowstorage_tab", () -> CreativeModeTab.builder().title(Component.translatable("item_group.%s.creative_tab".formatted(MODID))).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> COPPER_CHEST_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
-        output.accept(COPPER_CHEST_ITEM.get());
-        output.accept(IRON_CHEST_ITEM.get());
-        output.accept(GOLD_CHEST_ITEM.get());
-        output.accept(DIAMOND_CHEST_ITEM.get());
-        output.accept(NETHERITE_CHEST_ITEM.get());
+        public static final RegistryObject<CreativeModeTab> TAB = CREATIVE_MODE_TABS.register("meowstorage_tab",
+                        () -> CreativeModeTab.builder()
+                                        .title(Component.translatable("item_group.%s.creative_tab".formatted(MODID)))
+                                        .withTabsBefore(CreativeModeTabs.COMBAT)
+                                        .icon(() -> COPPER_CHEST_ITEM.get().getDefaultInstance())
+                                        .displayItems((parameters, output) -> {
+                                                output.accept(COPPER_CHEST_ITEM.get());
+                                                output.accept(IRON_CHEST_ITEM.get());
+                                                output.accept(GOLD_CHEST_ITEM.get());
+                                                output.accept(DIAMOND_CHEST_ITEM.get());
+                                                output.accept(NETHERITE_CHEST_ITEM.get());
 
-        output.accept(SMALL_BACKPACK_ITEM.get());
-        output.accept(MID_BACKPACK_ITEM.get());
-        output.accept(BIG_BACKPACK_ITEM.get());
+                                                output.accept(SMALL_BACKPACK_ITEM.get());
+                                                output.accept(MID_BACKPACK_ITEM.get());
+                                                output.accept(BIG_BACKPACK_ITEM.get());
 
-        output.accept(CONTAINER_LINKER_ITEM.get());
-        output.accept(LINKER_OUTPUT_ITEM.get());
-    }).build());
+                                                output.accept(COPPER_BARREL_ITEM.get());
+                                                output.accept(IRON_BARREL_ITEM.get());
+                                                output.accept(GOLD_BARREL_ITEM.get());
+                                                output.accept(DIAMOND_BARREL_ITEM.get());
+                                                output.accept(NETHERITE_BARREL_ITEM.get());
+
+                                                output.accept(CONTAINER_LINKER_ITEM.get());
+                                                output.accept(LINKER_OUTPUT_ITEM.get());
+                                        }).build());
 }

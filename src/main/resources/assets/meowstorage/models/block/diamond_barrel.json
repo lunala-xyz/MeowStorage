@@ -1,0 +1,7 @@
+{
+  "parent": "meowstorage:block/base_barrel",
+  "textures": {
+    "0": "meowstorage:block/diamond_chest_texture",
+    "particle": "meowstorage:block/diamond_chest_texture"
+  }
+}

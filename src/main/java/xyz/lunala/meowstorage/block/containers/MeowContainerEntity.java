@@ -119,6 +119,17 @@ public abstract class MeowContainerEntity extends BlockEntity implements MenuPro
     }
 
     /**
+     * Provides capabilities for the block entity from all sides.
+     * This is useful for directional interactions.
+     * @param cap The capability to retrieve.
+     * @return A LazyOptional containing the requested capability, if available.
+     */
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
+        return (cap == ForgeCapabilities.ITEM_HANDLER) ? getOptional().cast() : LazyOptional.empty().cast();
+    }
+
+    /**
      * Provides capabilities for the block entity from a specific side.
      * This is useful for directional interactions.
      * @param cap The capability to retrieve.

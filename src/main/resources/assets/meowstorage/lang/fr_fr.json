@@ -9,16 +9,19 @@
   "container.meowstorage.diamond_chest": "Diamond Chest",
   "block.meowstorage.netherite_chest": "Netherite Chest",
   "container.meowstorage.netherite_chest": "Netherite Chest",
-
   "block.meowstorage.small_backpack": "Small Backpack",
   "container.meowstorage.small_backpack": "Small Backpack",
   "block.meowstorage.mid_backpack": "Backpack",
   "container.meowstorage.mid_backpack": "Backpack",
   "block.meowstorage.big_backpack": "Big Backpack",
   "container.meowstorage.big_backpack": "Big Backpack",
-
+  "block.meowstorage.copper_barrel": "Copper Barrel",
+  "block.meowstorage.iron_barrel": "Iron Barrel",
+  "block.meowstorage.gold_barrel": "Gold Barrel",
+  "block.meowstorage.diamond_barrel": "Diamond Barrel",
+  "block.meowstorage.netherite_barrel": "Netherite Barrel",
+  "entity.meowstorage.calico_cat": "Calico Cat",
   "block.meowstorage.container_linker": "Container Linker",
   "block.meowstorage.container_link_output": "Container Linker Output",
-
   "item_group.meowstorage.creative_tab": "Meow Storage"
 }

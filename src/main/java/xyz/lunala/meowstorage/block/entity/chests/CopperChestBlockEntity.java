@@ -1,8 +1,9 @@
-package xyz.lunala.meowstorage.block.entity;
+package xyz.lunala.meowstorage.block.entity.chests;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
+import xyz.lunala.meowstorage.block.entity.MeowChestEntityBase;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 
 /**
