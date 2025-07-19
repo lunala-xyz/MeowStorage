@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "link_status=unlinked": {
+      "model": "meowstorage:block/container_link_output"
+    },
+    "link_status=linked": {
+      "model": "meowstorage:block/container_link_output_linked"
+    }
+  }
+}

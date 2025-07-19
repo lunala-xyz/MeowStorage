@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "meowstorage:block/container_link_output_texture_unlinked"
+  }
+}

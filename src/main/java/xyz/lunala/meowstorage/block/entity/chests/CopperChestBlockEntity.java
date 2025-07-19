@@ -27,4 +27,5 @@ public class CopperChestBlockEntity extends MeowChestEntityBase {
     public CopperChestBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityInit.COPPER_CHEST.get(), pos, state, INVENTORY_SIZE, MATERIAL);
     }
+
 }

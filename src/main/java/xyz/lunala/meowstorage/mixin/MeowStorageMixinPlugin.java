@@ -105,6 +105,7 @@ public class MeowStorageMixinPlugin implements IMixinConfigPlugin {
      */
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-        Meowstorage.getLogger().info(targetClassName + " has been mixed with " + mixinClassName);
+        
     }
+
 }

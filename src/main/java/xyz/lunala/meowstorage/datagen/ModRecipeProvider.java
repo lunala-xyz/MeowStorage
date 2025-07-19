@@ -29,6 +29,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         generateChests(pWriter);
         generateBarrels(pWriter);
         generateBackpacks(pWriter);
+
+        filledRecipe(pWriter, RecipeCategory.REDSTONE, ItemInit.LINKER_OUTPUT_ITEM.get(), Items.COBBLESTONE.asItem(), Items.ENDER_PEARL.asItem(), "has_container_linker", "container_linker_output");
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ItemInit.CONTAINER_LINKER_ITEM.get())
+                .pattern("RDR")
+                .pattern("COC")
+                .pattern("RPR")
+                .define('C', Items.COBBLESTONE)
+                .define('O', ItemInit.LINKER_OUTPUT_ITEM.get())
+                .define('R', Items.REDSTONE)
+                .define('D', Items.DIAMOND)
+                .define('P', Items.ENDER_PEARL)
+                .unlockedBy("has_cobblestone", has(Items.COBBLESTONE))
+                .save(pWriter, Meowstorage.MODID + ":asdfawesdfaw_container_linker");
     }
 
     protected static void fullRecipe(Consumer<FinishedRecipe> recipeOutput, RecipeCategory category, ItemLike result, ItemLike input, String unlockName, String recipeName) {

@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "meowstorage:block/container_linker" }
+  }
+}

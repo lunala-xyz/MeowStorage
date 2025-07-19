@@ -18,15 +18,20 @@ All of this is very much WIP
 | Backpack | 54 Stacks = 3456 Items |
 | Big Backpack | 108 Stacks = 6912 Items |
 
+### Container linkers
+Link containers using a Container Linker and a Container Linker Output by simply right clicking the output on the placed linker and then placing it wherever.
+The output is now linked to the Linker and can be interacted with via hoppers.
+
+
 ### Barrels (TBA)
 Add single item storage block that can hold multiple stacks of one item
 | Type | Material | Size |
 |------|----------|------|
-| Copper Barrel | Copper | 54 Stacks = 3456 Items |
-| Iron Barrel | Iron | 108 Stacks = 6912 Items |
-| Gold Barrel | Gold | 216 Stacks = 13824 Items |
-| Diamond Barrel | Diamond | 432 Stacks = 27648 Items |
-| Netherite Barrel | Netherite | 864 Stacks = 55296 Items |
+| Copper Barrel | Copper | 27 Stacks = 1728 Items |
+| Iron Barrel | Iron |   Stacks = 3456 Items |
+| Gold Barrel | Gold | 108 Stacks = 6912 Items |
+| Diamond Barrel | Diamond | 216 Stacks = 13824 Items |
+| Netherite Barrel | Netherite | 432 Stacks = 27648 Items |
 
 ### Cats
 - Calico cat (after Yannick's cats)
