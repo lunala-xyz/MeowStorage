@@ -158,14 +158,14 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    //runtimeOnly fg.deobf("maven.modrinth:jade:11.13.1+forge")
-    //runtimeOnly fg.deobf("maven.modrinth:guideme:20.1.11")
-    //runtimeOnly fg.deobf("maven.modrinth:cloth-config:11.1.136+forge")
-    //runtimeOnly fg.deobf("maven.modrinth:architectury-api:9.2.14+forge")
-    //runtimeOnly fg.deobf("maven.modrinth:jei:4r3Kp7U7")
-    //runtimeOnly fg.deobf("maven.modrinth:toms-storage:1.20-1.7.1")
-    //runtimeOnly fg.deobf("maven.modrinth:ae2:15.4.5")
-    //runtimeOnly fg.deobf("maven.modrinth:powah:5.0.10-forge")
+    runtimeOnly fg.deobf("maven.modrinth:jade:11.13.1+forge")
+    runtimeOnly fg.deobf("maven.modrinth:guideme:20.1.11")
+    runtimeOnly fg.deobf("maven.modrinth:cloth-config:11.1.136+forge")
+    runtimeOnly fg.deobf("maven.modrinth:architectury-api:9.2.14+forge")
+    runtimeOnly fg.deobf("maven.modrinth:jei:4r3Kp7U7")
+    runtimeOnly fg.deobf("maven.modrinth:toms-storage:1.20-1.7.1")
+    runtimeOnly fg.deobf("maven.modrinth:ae2:15.4.5")
+    runtimeOnly fg.deobf("maven.modrinth:powah:5.0.10-forge")
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar

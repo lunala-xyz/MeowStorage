@@ -13,13 +13,11 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import xyz.lunala.meowstorage.block.entity.MidBackpackEntity;
-import xyz.lunala.meowstorage.block.entity.SmallBackpackEntity;
+import xyz.lunala.meowstorage.block.entity.backpacks.SmallBackpackEntity;
 import xyz.lunala.meowstorage.init.BlockEntityInit;
 import xyz.lunala.meowstorage.init.ItemInit;
 
 import java.util.List;
-import java.util.Properties;
 
 public class SmallBackpack extends MeowBackpackBase {
 
