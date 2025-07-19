@@ -1,6 +1,7 @@
 package xyz.lunala.meowstorage.block.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -11,6 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -204,5 +207,29 @@ public abstract class MeowBarrelEntityBase extends BlockEntity implements Contai
     @Override
     public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    /**
+     * Provides capabilities for the block entity from all sides.
+     * This is useful for directional interactions.
+     * @param cap The capability to retrieve.
+     * @return A LazyOptional containing the requested capability, if available.
+     */
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
+        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : LazyOptional.empty().cast();
+    }
+
+    /**
+     * Provides capabilities for the block entity from a specific side.
+     * This is useful for directional interactions.
+     * @param cap The capability to retrieve.
+     * @param side The side from which the capability is requested (can be null).
+     * @return A LazyOptional containing the requested capability, if available.
+     */
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        // If the requested capability is ITEM_HANDLER, return the inventory optional.
+        return (cap == ForgeCapabilities.ITEM_HANDLER) ? inventoryOptional.cast() : LazyOptional.empty().cast();
     }
 }

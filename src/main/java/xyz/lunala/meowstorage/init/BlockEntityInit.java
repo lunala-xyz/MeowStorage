@@ -67,7 +67,6 @@ public class BlockEntityInit {
                                                         .of(BigBackpackEntity::new, BlockInit.BIG_BACKPACK.get())
                                                         .build(null));
 
-        <<<<<<<HEAD
         public static final RegistryObject<BlockEntityType<CopperBarrelBlockEntity>> COPPER_BARREL = BLOCK_ENTITIES
                         .register("copper_barrel",
                                         () -> BlockEntityType.Builder
@@ -96,9 +95,7 @@ public class BlockEntityInit {
                                         () -> BlockEntityType.Builder
                                                         .of(NetheriteBarrelBlockEntity::new,
                                                                         BlockInit.NETHERITE_BARREL.get())
-                                                        .build(null));=======
+                                                        .build(null));
     public static final RegistryObject<BlockEntityType<ContainerLinkerOutputBlockEntity>> LINKER_OUTPUT = BLOCK_ENTITIES.register("container_link_output",
             () -> BlockEntityType.Builder.of(ContainerLinkerOutputBlockEntity::new, BlockInit.LINKER_OUTPUT.get()).build(null));
-
-        >>>>>>>main
 }

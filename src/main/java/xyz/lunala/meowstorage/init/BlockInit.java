@@ -83,6 +83,9 @@ public class BlockInit {
 
     public static final RegistryObject<NetheriteBarrelBlock> NETHERITE_BARREL = BLOCKS.register("netherite_barrel", () ->
             new NetheriteBarrelBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .destroyTime(1f)));
+
         public static final RegistryObject<ContainerLinkerBlock> CONTAINER_LINKER = BLOCKS.register("container_linker",
                         () -> new ContainerLinkerBlock(BlockBehaviour.Properties.of()
                                         .mapColor(MapColor.STONE)
