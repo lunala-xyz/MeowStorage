@@ -2,7 +2,9 @@
 Your all-in-one storage solution
 All of this is very much WIP
 
-### Chests
+[Check out the wiki](https://github.com/lunala-xyz/MeowStorage/wiki)
+
+### Chests ([Wiki](https://github.com/lunala-xyz/MeowStorage/wiki/Chests))
 | Type | Material | Size |
 |------|----------|------|
 | Copper Chest | Copper | 2x Chest = 54 Slots |
@@ -11,19 +13,18 @@ All of this is very much WIP
 | Diamond Chest | Diamond | 16x Chest = 432 Slots |
 | Netherite Chest | Netherite | 32x Chest = 864 Slots |
 
-### Backpacks
+### Backpacks ([Wiki](https://github.com/lunala-xyz/MeowStorage/wiki/Backpacks))
 | Type | Size |
 |------|------|
 | Small Backpack | 27 Stacks = 1728 Items |
 | Backpack | 54 Stacks = 3456 Items |
 | Big Backpack | 108 Stacks = 6912 Items |
 
-### Container linkers
+### Container linkers ([Wiki](https://github.com/lunala-xyz/MeowStorage/wiki/Container-linkers))
 Link containers using a Container Linker and a Container Linker Output by simply right clicking the output on the placed linker and then placing it wherever.
 The output is now linked to the Linker and can be interacted with via hoppers.
 
-
-### Barrels
+### Barrels ([Wiki](https://github.com/lunala-xyz/MeowStorage/wiki/Barrels))
 Add single item storage block that can hold multiple stacks of one item
 | Type | Material | Size |
 |------|----------|------|
