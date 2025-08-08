@@ -119,6 +119,8 @@ public class ChestMenuScreen extends AbstractContainerScreen<ChestMenu> {
 
             guiGraphics.blit(BIG_BACKGROUND, this.leftPos + 181, this.topPos + floaterTop + floaterOffset, floaterLeft, floaterTop, floaterWidth, floaterHeight);
         }
+
+        renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
     private ResourceLocation getAppropriateBackground() {
