@@ -156,12 +156,6 @@ public abstract class MeowContainer extends Block implements EntityBlock {
             if (blockentity instanceof Container) {
                 Containers.dropContents(pLevel, pPos, (Container) blockentity);
                 pLevel.updateNeighbourForOutputSignal(pPos, this);
-
-                for(ItemStack drop : this.getDrops(pState, (ServerLevel) pLevel, pPos, blockentity)) {
-                    if (!drop.isEmpty()) {
-                        Containers.dropItemStack(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), drop);
-                    }
-                }
             }
 
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
