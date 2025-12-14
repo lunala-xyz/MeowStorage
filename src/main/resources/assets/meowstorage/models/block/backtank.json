@@ -296,6 +296,7 @@
 			}
 		}
 	],
+	"display": {},
 	"groups": [
 		{
 			"name": "fluid_display",
