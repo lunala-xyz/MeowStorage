@@ -14,6 +14,7 @@ plugins {
     id 'idea'
     id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'maven-publish'
 }
 
 apply plugin: 'org.spongepowered.mixin'
@@ -220,4 +221,25 @@ tasks.named('jar', Jar).configure {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+
+            groupId = mod_group_id
+            artifactId = mod_id
+            version = mod_version
+        }
+    }
+    repositories {
+        maven {
+            url = 'https://maven.lunala.xyz'
+            credentials {
+                username = project.findProperty("mavenUser")
+                password = project.findProperty("mavenPassword")
+            }
+        }
+    }
 }
