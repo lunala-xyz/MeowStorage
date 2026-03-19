@@ -127,7 +127,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 new Tuple(ItemInit.GOLD_BARREL_ITEM.get(), Items.GOLD_INGOT),
                 new Tuple(ItemInit.DIAMOND_BARREL_ITEM.get(), Items.DIAMOND),
         };
-        ItemLike base = Items.CHEST;
+        ItemLike base = Items.BARREL;
 
         for (Tuple<ItemLike, ItemLike> pair : items) {
             chestFromMaterial(recipeOutput, pair.getA(), pair.getB(), base, "has_" + pair.getA());
