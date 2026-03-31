@@ -3,7 +3,7 @@
   "category": "redstone",
   "key": {
     "A": {
-      "item": "minecraft:chest"
+      "item": "minecraft:barrel"
     },
     "B": {
       "item": "minecraft:copper_ingot"
